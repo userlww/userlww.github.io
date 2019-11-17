@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      密码学之Hash函数和消息认证 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="Hash函数定义&amp;nbsp;&amp;nbsp;&amp;nbsp;Hash是将任意长的消息M变换为较短的、固定长度的值H（M）的不可逆的单向密码体制。H（M）称为杂凑值，杂凑码或者消息摘要，它打上了输入串的烙印，又称为数字指纹，是密码学的基本工具，在数字签名和消息的完整性检测等方面有着重要的应用。 条件 将任意长度的比特串x压缩成固定长度的字符串y 已知x，计算y很容易，而反之则不可行，即单向性 找出x1和x">
+<meta name="keywords" content="密码学,Hash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学之Hash函数和消息认证 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/01/16/密码学之Hash函数和消息认证/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hash函数定义&amp;nbsp;&amp;nbsp;&amp;nbsp;Hash是将任意长的消息M变换为较短的、固定长度的值H（M）的不可逆的单向密码体制。H（M）称为杂凑值，杂凑码或者消息摘要，它打上了输入串的烙印，又称为数字指纹，是密码学的基本工具，在数字签名和消息的完整性检测等方面有着重要的应用。 条件 将任意长度的比特串x压缩成固定长度的字符串y 已知x，计算y很容易，而反之则不可行，即单向性 找出x1和x">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2017/12/30/21/34/dessert-3051043__340.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fnib99q50nj30p20d0gry.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0060lm7Tly1fnibmc2qpmj30dx0ga0tb.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/0060lm7Tly1fnifb1ksccj30rh0gq0ua.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/0060lm7Tly1fnigqyh6hcj30h90ivta8.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/0060lm7Tly1fnigy27kjgj30qe0hadp9.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/0060lm7Tly1fnii4kuqnij30kg0dmaau.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/0060lm7Tly1fnijovnsgnj30pq0ifdia.jpg">
+<meta property="og:updated_time" content="2018-01-27T06:24:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="密码学之Hash函数和消息认证 | Hexo">
+<meta name="twitter:description" content="Hash函数定义&amp;nbsp;&amp;nbsp;&amp;nbsp;Hash是将任意长的消息M变换为较短的、固定长度的值H（M）的不可逆的单向密码体制。H（M）称为杂凑值，杂凑码或者消息摘要，它打上了输入串的烙印，又称为数字指纹，是密码学的基本工具，在数字签名和消息的完整性检测等方面有着重要的应用。 条件 将任意长度的比特串x压缩成固定长度的字符串y 已知x，计算y很容易，而反之则不可行，即单向性 找出x1和x">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2017/12/30/21/34/dessert-3051043__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">密码学之Hash函数和消息认证</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-16" class="post-meta__date date">2018-01-16</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/密码学/">密码学</a>, <a class="categories-link" href="/categories/密码学/Hash和消息认证/">Hash和消息认证</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/Hash/">Hash</a>, <a class="tags-link" href="/tags/密码学/">密码学</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2017/12/30/21/34/dessert-3051043__340.jpg" alt="此处输入图片的描述"></p>
+<h3 id="Hash函数"><a href="#Hash函数" class="headerlink" title="Hash函数"></a>Hash函数</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>&nbsp;&nbsp;&nbsp;Hash是将任意长的消息M变换为较短的、固定长度的值H（M）的不可逆的单向密码体制。H（M）称为杂凑值，杂凑码或者消息摘要，它打上了输入串的烙印，又称为数字指纹，是密码学的基本工具，在数字签名和消息的完整性检测等方面有着重要的应用。</p>
+<h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><ul>
+<li>将任意长度的比特串x压缩成固定长度的字符串y</li>
+<li>已知x，计算y很容易，而反之则不可行，即单向性</li>
+<li>找出x1和x2，使得y1和y2相等在在计算上是不可行的，即抗碰撞性<br>满足以上三个条件的函数可以称之为Hash函数</li>
+</ul>
+<h4 id="Hash函数的构造"><a href="#Hash函数的构造" class="headerlink" title="Hash函数的构造"></a>Hash函数的构造</h4><p>&nbsp;&nbsp;&nbsp;多数Hash函数如MD5，SHA-A,都是迭代型的。<br>&nbsp;&nbsp;&nbsp;<img src="http://ww4.sinaimg.cn/large/0060lm7Tly1fnib99q50nj30p20d0gry.jpg" alt="此处输入图片的描述"></p>
+<h4 id="Hash函数的一班模型"><a href="#Hash函数的一班模型" class="headerlink" title="Hash函数的一班模型"></a>Hash函数的一班模型</h4><p><img src="http://ww1.sinaimg.cn/large/0060lm7Tly1fnibmc2qpmj30dx0ga0tb.jpg" alt="此处输入图片的描述"></p>
+<h3 id="Hash函数算法介绍"><a href="#Hash函数算法介绍" class="headerlink" title="Hash函数算法介绍"></a>Hash函数算法介绍</h3><h4 id="MD5算法"><a href="#MD5算法" class="headerlink" title="MD5算法"></a>MD5算法</h4><h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><ul>
+<li>填充消息：使消息长度Lmod512=448，如果消息长度恰好模512等于448，则增加512个填充比特。那么填充个数为1-512</li>
+<li>补足长度：将消息长度转换为64bit的数值，如果长度超过64位能够表示的数据长度，则只保留最后64bit,添加到填充数据后面，使数据为512比特的整数倍</li>
+<li>512比特按照32比特分为16组。</li>
+</ul>
+<h5 id="MD5的主循环示意图"><a href="#MD5的主循环示意图" class="headerlink" title="MD5的主循环示意图"></a>MD5的主循环示意图</h5><p><img src="http://ww3.sinaimg.cn/large/0060lm7Tly1fnifb1ksccj30rh0gq0ua.jpg" alt="此处输入图片的描述"></p>
+<h5 id="分组处理"><a href="#分组处理" class="headerlink" title="分组处理"></a>分组处理</h5><p><img src="http://ww2.sinaimg.cn/large/0060lm7Tly1fnigqyh6hcj30h90ivta8.jpg" alt="此处输入图片的描述"></p>
+<h5 id="步操作"><a href="#步操作" class="headerlink" title="步操作"></a>步操作<img src="http://ww2.sinaimg.cn/large/0060lm7Tly1fnigy27kjgj30qe0hadp9.jpg" alt="此处输入图片的描述"></h5><p>  &nbsp;&nbsp;&nbsp;MD5在经过四轮处理的过程中，每一轮又包括16步，且每一轮以不同的次序使用16个字</p>
+<ul>
+<li>在第一轮以字的初始次序使用</li>
+<li>后面三轮的次序通过下面的置换确定<pre><code>P2(i)=(1+5i)mod16
+P3(i)=(5+3i)mod16
+P4(i)=7imod16</code></pre></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;做完4轮操作之后，执行</p>
+<ul>
+<li>a=A⊕a</li>
+<li>b=B⊕b</li>
+<li>c=C⊕c</li>
+<li>d=D⊕d<br>&nbsp;&nbsp;&nbsp;如果还有下一个512分组，则对其进行同第一轮操作，如果所有分组处理完毕，输出a||b||c||d,即为消息的MD5值<h4 id="SHA-1"><a href="#SHA-1" class="headerlink" title="SHA-1"></a>SHA-1</h4><h5 id="SHA-1的处理过程和MD5类似"><a href="#SHA-1的处理过程和MD5类似" class="headerlink" title="SHA-1的处理过程和MD5类似"></a>SHA-1的处理过程和MD5类似</h5>第一步：填充消息，同MD5<br>第二步：补足长度，同MD5<br>分组处理过程<br><img src="http://ww3.sinaimg.cn/large/0060lm7Tly1fnii4kuqnij30kg0dmaau.jpg" alt="此处输入图片的描述"></li>
+</ul>
+<p>  步操作<img src="http://ww2.sinaimg.cn/large/0060lm7Tly1fnijovnsgnj30pq0ifdia.jpg" alt="此处输入图片的描述"></p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

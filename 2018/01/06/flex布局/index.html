@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      flex布局 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;今天来复习一下css中的一个比较重要的布局方式，flex，传统的css布局依赖于盒模型，依赖于三个重要属性，position，display和flaot，对于一些比较特殊的布局实现起来很不方便，比如，垂直居中。2009年W3c提出了flex布局方案吗，能够非常简便，快捷并且完整的实现各种页面布局而且到现在为止，各个浏览器对它的支持也非常的好。写这篇博客的时候参考">
+<meta name="keywords" content="前端,css布局">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flex布局 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/01/06/flex布局/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;今天来复习一下css中的一个比较重要的布局方式，flex，传统的css布局依赖于盒模型，依赖于三个重要属性，position，display和flaot，对于一些比较特殊的布局实现起来很不方便，比如，垂直居中。2009年W3c提出了flex布局方案吗，能够非常简便，快捷并且完整的实现各种页面布局而且到现在为止，各个浏览器对它的支持也非常的好。写这篇博客的时候参考">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2016/10/22/15/32/water-1761027__340.jpg">
+<meta property="og:image" content="http://i2.bvimg.com/626790/ba613d56db10edf1.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071005.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071010.png">
+<meta property="og:updated_time" content="2018-01-28T12:15:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flex布局 | Hexo">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;今天来复习一下css中的一个比较重要的布局方式，flex，传统的css布局依赖于盒模型，依赖于三个重要属性，position，display和flaot，对于一些比较特殊的布局实现起来很不方便，比如，垂直居中。2009年W3c提出了flex布局方案吗，能够非常简便，快捷并且完整的实现各种页面布局而且到现在为止，各个浏览器对它的支持也非常的好。写这篇博客的时候参考">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2016/10/22/15/32/water-1761027__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">flex布局</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-06" class="post-meta__date date">2018-01-06</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/前端/">前端</a>, <a class="categories-link" href="/categories/前端/CSS/">CSS</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/css布局/">css布局</a>, <a class="tags-link" href="/tags/前端/">前端</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2016/10/22/15/32/water-1761027__340.jpg" alt="此处输入图片的描述"><br>&nbsp;&nbsp;&nbsp;今天来复习一下css中的一个比较重要的布局方式，flex，传统的css布局依赖于盒模型，依赖于三个重要属性，position，display和flaot，对于一些比较特殊的布局实现起来很不方便，比如，垂直居中。2009年W3c提出了flex布局方案吗，能够非常简便，快捷并且完整的实现各种页面布局而且到现在为止，各个浏览器对它的支持也非常的好。写这篇博客的时候参考了阮一峰大佬的这篇文章<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool" target="_blank" rel="noopener">Flex 布局教程：语法篇</a>和一篇纯英文文章<a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener">A Complete Guide to Flex</a></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>&nbsp;&nbsp;&nbsp;Flex即为Flexible Box，意为“弹性布局”，任何一个容器都可以指定它为Flex布局</p>
+<blockquote>
+<pre><code> div
+{
+   display:flex;
+   }</code></pre></blockquote>
+<p>对行内元素设置flex</p>
+<blockquote>
+<pre><code>    .container
+{
+ display:inline-flex;
+}</code></pre></blockquote>
+<p>需要注意的是在webkit内核的浏览器中，必须加上浏览器内核前缀：-webkit-flex;</p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p><img src="http://i2.bvimg.com/626790/ba613d56db10edf1.png" alt="此处输入图片的描述"></p>
+<p>  如图中所示，默认在水平方向和竖直方向上各有一条轴线，水平方向上的轴线叫做main axis，最左侧称为main start，最右侧称为main end；竖直方向上的轴线叫做cross axis，最上面叫做cross start，最下面叫做cross end。容器中单个项目所占据的主轴宽度叫做 main size，占据的竖直方向上的宽度叫做cross size</p>
+<h3 id="flex容器属性"><a href="#flex容器属性" class="headerlink" title="flex容器属性"></a>flex容器属性</h3><p>&nbsp;&nbsp;&nbsp;flex容器属性有6个</p>
+<h4 id="flex—direction"><a href="#flex—direction" class="headerlink" title="flex—direction"></a>flex—direction</h4><p>&nbsp;&nbsp;&nbsp;flex-direction属性决定了项目在主轴方向上的排列方向<img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071005.png" alt="此处输入图片的描述"></p>
+<p>属性值</p>
+<ul>
+<li>row（默认值）：在水平方向上从最左端开始排列</li>
+<li>row-reverse：水平方向上从最右端开始排列</li>
+<li>column：在竖直方向上从最上端往下排列</li>
+<li>column-reverse：在竖直方向上从最下端向上排列</li>
+</ul>
+<h4 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h4><p>&nbsp;&nbsp;&nbsp;在未定义该属性的情况下，默认所有项目排列在同一行，Flex-wrap属性值规定当一行放不下时，如何换行属性的取值有三种</p>
+<ul>
+<li>nowrap:不换行，所有项目怕排列在同一行，当项目宽度之和大于容器宽度时，按比例调整，使所有项目都能够排在同一行</li>
+<li>wrap：换行之后第一行在上面，自上向下行号依次增加</li>
+<li>wrap-reverse:换行之后，第一行在下面，行号从下往上依次递增</li>
+</ul>
+<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>&nbsp;&nbsp;&nbsp;flex-flow是前两个属性的简写形式</p>
+<blockquote>
+<pre><code>.container{
+   flex-flow: &lt;flex-direction&gt;||&lt;flex-flow&gt;
+   }</code></pre></blockquote>
+<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>&nbsp;&nbsp;&nbsp;justify-content属性定义了项目在主轴方向上的对齐方式</p>
+<ul>
+<li>flex-start:左对齐</li>
+<li>flex-end: 右对齐</li>
+<li>center:居中</li>
+<li>space-between:两端对齐，项目间隔相等</li>
+<li>space-around:每个项目两侧的间隔相等，项目之间的间隔比项目与边框之间的间隔大一倍。<br><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071010.png" alt="此处输入图片的描述"></li>
+</ul>
+<h4 id="align-item属性"><a href="#align-item属性" class="headerlink" title="align-item属性"></a>align-item属性</h4><p>  &nbsp;&nbsp;&nbsp;align-item属性定义项目如何在竖直方向上如何对齐</p>
+<ul>
+<li>flex-start:在交叉轴的起点对齐</li>
+<li>flex-end:在交叉轴的终点对齐</li>
+<li>center：在交叉轴的中间对齐</li>
+<li>baseline：在项目的第一行文字的基线对齐</li>
+<li>stretch：如果项目未设置高度或设置为auto，将占满整个容器的高度</li>
+</ul>
+<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>&nbsp;&nbsp;&nbsp;align-content属性定义了多根轴线的对齐方式，如果轴线仅有一根，该属性不起作用</p>
+<ul>
+<li>flex-start：与交叉轴的起点对齐</li>
+<li>flex-end: 与交叉轴的终点对齐</li>
+<li>center：与交叉轴的中间对齐</li>
+<li>space-between:与交叉轴两端对齐，轴之间的间隔平均分布</li>
+<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边线之间的间隔大一倍</li>
+<li>stretch：轴线占满整个交叉轴</li>
+</ul>
+<h3 id="项目的属性"><a href="#项目的属性" class="headerlink" title="项目的属性"></a>项目的属性</h3><p>&nbsp;&nbsp;&nbsp;以下6个属性，用来设置在项目上</p>
+<ul>
+<li>order:定义项目排列顺序，数值越小，排列越靠前，默认值为0</li>
+<li>flex-grow:定义项目的放大比例，默认为0，如果所有项目的该属性值都为1，则将剩余空间等分之后分配给各个项目。如果有一个为2.则按照放大倍数的比例分配剩余空间，即该项目分配得到的剩余空间比其他项目大一倍  </li>
+<li>flex-shrink:定义项目的缩小比例，默认比例为1，若空间不足，该项目将缩小</li>
+<li>flex-basis：定义了在多余空间分配之前，项目占据的主轴空间，浏览器根据这个属性，计算主轴是否有多余的空间。它的默认值是auto，就是项目本来的大小</li>
+<li>flex属性是flex-grow，flex-shrink和flex-basis的简写，默认值是0 1 auto，后两个属性可选</li>
+<li>align-self:允许多个项目有与其他项目不一样的对齐方式，可覆盖align-items属性，默认值为auto，表示继承父元素的align-item属性，没有父元素时等同于stretch</li>
+</ul>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      JavaScript DOM | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="DOM节点层次 DOM可以将HTML文档绘制成一个由多层次节点构成的结构，节点可以分为几种不同的类型，每一个节点都拥有各自的特点，数据和方法，也可能和其他节点存在某种关系，节点之间构成了层次，所有的页面表现为以一个特定节点为根节点的树形结构。文档节点是每个文档的根节点。HTML文档的根节点是html标签，文档节点是文档的最外层元素，每个文档只有一个根元素，HTML中的每一段标记都可以用一个节点表">
+<meta name="keywords" content="JavaScript,DOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript DOM | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/04/25/JavaScript-DOM/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="DOM节点层次 DOM可以将HTML文档绘制成一个由多层次节点构成的结构，节点可以分为几种不同的类型，每一个节点都拥有各自的特点，数据和方法，也可能和其他节点存在某种关系，节点之间构成了层次，所有的页面表现为以一个特定节点为根节点的树形结构。文档节点是每个文档的根节点。HTML文档的根节点是html标签，文档节点是文档的最外层元素，每个文档只有一个根元素，HTML中的每一段标记都可以用一个节点表">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2017/06/21/13/20/mountain-climber-2427191__340.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fqnrex81isj30bf0ai74j.jpg">
+<meta property="og:updated_time" content="2018-04-26T12:48:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript DOM | Hexo">
+<meta name="twitter:description" content="DOM节点层次 DOM可以将HTML文档绘制成一个由多层次节点构成的结构，节点可以分为几种不同的类型，每一个节点都拥有各自的特点，数据和方法，也可能和其他节点存在某种关系，节点之间构成了层次，所有的页面表现为以一个特定节点为根节点的树形结构。文档节点是每个文档的根节点。HTML文档的根节点是html标签，文档节点是文档的最外层元素，每个文档只有一个根元素，HTML中的每一段标记都可以用一个节点表">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2017/06/21/13/20/mountain-climber-2427191__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">JavaScript DOM</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-04-25" class="post-meta__date date">2018-04-25</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/前端/">前端</a>, <a class="categories-link" href="/categories/前端/JavaScript/">JavaScript</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/DOM/">DOM</a>, <a class="tags-link" href="/tags/JavaScript/">JavaScript</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2017/06/21/13/20/mountain-climber-2427191__340.jpg" alt="此处输入图片的描述"></p>
+<h3 id="DOM节点层次"><a href="#DOM节点层次" class="headerlink" title="DOM节点层次"></a>DOM节点层次</h3><p> DOM可以将HTML文档绘制成一个由多层次节点构成的结构，节点可以分为几种不同的类型，每一个节点都拥有各自的特点，数据和方法，也可能和其他节点存在某种关系，节点之间构成了层次，所有的页面表现为以一个特定节点为根节点的树形结构。文档节点是每个文档的根节点。HTML文档的根节点是html标签，文档节点是文档的最外层元素，每个文档只有一个根元素，HTML中的每一段标记都可以用一个节点表示，一共有12种节点，通过12个数值常量来表示<br><img src="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fqnrex81isj30bf0ai74j.jpg" alt="节点层次描述"></p>
+<ul>
+<li><p>Node.ELEMENT_NODE(1);</p>
+</li>
+<li><p>Node.ATTRIBUTE_NODE(2)</p>
+</li>
+<li><p>Node.TEXT_NODE(3)</p>
+</li>
+<li><p>NODE.CDATA_SECTION_NODE(4)</p>
+<p>其余的不做罗列，需要的可以自行查阅文档，获取节点类型的方法，每一个节点都有一个nodeType的属性通过nodeType可以确定该节点的类型，例如</p>
+<blockquote>
+<pre><code>if(someNode.nodeType==1){
+     alert(&quot;Node is a element&quot;);
+ }</code></pre></blockquote>
+</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;关于节点之间的关系，每一个节点都有一个childNodes属性，其中保存着一个NodeList对象，并且它也有length属性，但它并不是一个Array的实例，Nodelist对象会根据DOM的变化实时更新，可以通过方括号和item的方法来访问该节点的子节点，同时可以通过parentNode方法来访问节点的父节点，在同一个childList列表中的所有节点具有相同的父节点，他们互为同胞节点，可以通过previousSibing和nextSibing来访问它的上一个和下一个节点，第一个节点perviousSibing和最后一个节点的nextSibing的值都是null，父节点可以通过firstChild和lastChild来访问它的第一个和最后一个节点</p>
+<h3 id="操作节点"><a href="#操作节点" class="headerlink" title="操作节点"></a>操作节点</h3><p>Dom提供了一些操作节点的方法，可以对节点进行一些操作，</p>
+<ul>
+<li>添加节点 appendChild()，用于向childList列表的最末尾添加一个节点，如果该节点已经存在，则将该节点移动到childList的最后一个位置，如果要将新节点添加到某一个特定的位置，可以使用insertBefore()方法，接受两个参数，要插入的节点和作为参照的节点，如果参照节点是null的话，则insertBefore和appendChild()执行的结果相同</li>
+<li>替换节点，replaceChild(),该方法接受两个参数，一个是要插入的节点，另一个是要替换的节点，该方法返回这个节点并将该节点从文档树中删除，同时要插入的节点将替换该节点的位置，被替换的节点从文档树删除，但是该节点存在于文档中，只是文档树中没有它的位置</li>
+<li>删除节点，removeChild()用于删除节点，接受的参数为要删除的节点，该方法同时将该节点返回</li>
+<li>复制节点，cloneNode(),用于创建一个和调用该方法的节点的一个相同的副本，接受一个布尔值的参数，如果为true，则复制该节点以及其整个子节点树，为false的时候只复制该节点，复制之后的文本节点属于文档，没有指定的父节点，除非通过appendChild，insertBefore()或者replaceChild()将它添加到文档中</li>
+<li>normalize(),用于处理文档树中的文本节点，如果找到了空文本节点，则删除它，找到相邻的文本节点的话将它合并</li>
+</ul>
+<h3 id="Document类型"><a href="#Document类型" class="headerlink" title="Document类型"></a>Document类型</h3><p>&nbsp;&nbsp;&nbsp;document是window的一个实例,可以将其作为全局对象访问，通过它可以取得页面有关的信息，还能操作页面的外观和底层结构。</p>
+<ul>
+<li>通过documentElement属性指向页面中的html元素，</li>
+<li>通过childNodes列表来访问文档元素，</li>
+<li>document.body可以获取页面中的body元素，</li>
+<li>通过document.doctype属性来访问文档类型信息，</li>
+<li>通过document.title访问title标签中的文本内容，</li>
+<li>通过document.url访问页面的url，</li>
+<li>通过document.domain访问页面的域名,由于跨域限制的问题，不同的子域的页面无法通过JavaScript通信。通过将每个页面的document。domain设置为相同的值，这样就可以互相访问对方包含的JavaScript对象</li>
+<li>通过document.getElementByTagName获取的到的元素存放在一个HTMLCollection对象之中，与NodeList对象，可以通过方括号或者item的方法来访问，可以通过nameItem的方法，在item中传入标签的name属性来获取对应标签</li>
+<li>使用document.implementation.hasFeature来确定浏览器实现了DOM的哪些部分</li>
+<li>使用document.write和document.writeIn向文档流中写入文本，write原样写入，writeIn会在末尾加入一个换行符（\n)</li>
+<li>使用querySelect和querySelectAll()来获取文档元素，括号中的参数类似于jQuery，前者获取符合查找条件的第一个元素，后者获取符合的所有元素，返回一个nodeList对象</li>
+<li>通过classList属性来对元素的所有类名进行操作</li>
+<li>通过document.activeElement属性来获取DOM焦点，元素获得焦点的方法有页面加载，用户输入以及调用focus()方法，文档刚刚加载完成时activeElement指向document.body,加载期间指向null，通过document.hasFocus()判断元素是否获取了焦点。</li>
+<li>通过document.readyState来获取文档加载的进度，值有loading和complete两种</li>
+<li>document.head获取head标签</li>
+<li>document.charset获取文档编码规则</li>
+<li>为元素添加自定义属性</li>
+<li>innerHTML来获取调用元素的全部子节点</li>
+<li>scrollIntoView()方法</li>
+<li>children属性可以获得元素的所有同为元素节点的子节点</li>
+<li>contains()方法用来判断一个节点是不是调用该方法的那个节点的子节点</li>
+<li>CompareDocumentPosition()</li>
+<li>offsetHeight:元素在垂直空间上占用的空间大小</li>
+<li>offsetWidth:元素在水平方向上占用的空间大小</li>
+<li>offsetLeft：元素的左外边框至包含元素的左内边框的距离</li>
+<li>offsetTop：元素的上外边框至包含元素的上内边框的距离</li>
+<li>offsetLeft和offsetTop属性与包含元素有关，包含元素的引用保存在offsetParent属性中</li>
+<li>元素的客户区大小是指元素内容及其内边距所占据的空间的大小，clientWidth和clientHeight属性表示元素内容区的宽高加上内边距的的宽高</li>
+</ul>
+<h3 id="DOM操作技术"><a href="#DOM操作技术" class="headerlink" title="DOM操作技术"></a>DOM操作技术</h3><h4 id="动态脚本，使用appendChild方法向文档中插入script标签，并指定script脚本的src，type等属性值，可以加载外部的动态脚本。"><a href="#动态脚本，使用appendChild方法向文档中插入script标签，并指定script脚本的src，type等属性值，可以加载外部的动态脚本。" class="headerlink" title="动态脚本，使用appendChild方法向文档中插入script标签，并指定script脚本的src，type等属性值，可以加载外部的动态脚本。"></a>动态脚本，使用appendChild方法向文档中插入script标签，并指定script脚本的src，type等属性值，可以加载外部的动态脚本。</h4><h4 id="动态样式-与动态脚本类似。可以通过appendChild的方法向文档中插入link标签来引入外部样式表"><a href="#动态样式-与动态脚本类似。可以通过appendChild的方法向文档中插入link标签来引入外部样式表" class="headerlink" title="动态样式 与动态脚本类似。可以通过appendChild的方法向文档中插入link标签来引入外部样式表"></a>动态样式 与动态脚本类似。可以通过appendChild的方法向文档中插入link标签来引入外部样式表</h4>
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

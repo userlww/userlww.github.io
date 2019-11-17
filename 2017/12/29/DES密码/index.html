@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      DES密码 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="DES算法描述 概述&amp;nbsp;&amp;nbsp;&amp;nbsp;明文和密文分组均为64比特，有效密钥56比特，由初始代换，16轮迭代，逆初始置换组成。轮函数结构是Feistel网络，加解密算法相同，只是加密子秘钥和解密子密钥的使用顺序相反。加密过程&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;  加密过程详解 E—扩展">
+<meta name="keywords" content="密码学,分组密码,DES">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DES密码 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/12/29/DES密码/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="DES算法描述 概述&amp;nbsp;&amp;nbsp;&amp;nbsp;明文和密文分组均为64比特，有效密钥56比特，由初始代换，16轮迭代，逆初始置换组成。轮函数结构是Feistel网络，加解密算法相同，只是加密子秘钥和解密子密钥的使用顺序相反。加密过程&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;  加密过程详解 E—扩展">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2018/01/23/13/38/moss-3101476__340.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0060lm7Tly1fmxoj1ie3vj30go0avgm6.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/0060lm7Tly1fmxoutokyhj312j081myy.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/0060lm7Tly1fmxxy9gx1cj30m809d77m.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/0060lm7Tly1fmxyzbu3hzj310v0o87ua.jpg">
+<meta property="og:updated_time" content="2018-01-28T12:14:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DES密码 | Hexo">
+<meta name="twitter:description" content="DES算法描述 概述&amp;nbsp;&amp;nbsp;&amp;nbsp;明文和密文分组均为64比特，有效密钥56比特，由初始代换，16轮迭代，逆初始置换组成。轮函数结构是Feistel网络，加解密算法相同，只是加密子秘钥和解密子密钥的使用顺序相反。加密过程&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;  加密过程详解 E—扩展">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2018/01/23/13/38/moss-3101476__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">DES密码</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-12-29" class="post-meta__date date">2017-12-29</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/密码学/">密码学</a>, <a class="categories-link" href="/categories/密码学/分组密码/">分组密码</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/DES/">DES</a>, <a class="tags-link" href="/tags/分组密码/">分组密码</a>, <a class="tags-link" href="/tags/密码学/">密码学</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2018/01/23/13/38/moss-3101476__340.jpg" alt="此处输入图片的描述"></p>
+<h3 id="DES算法描述"><a href="#DES算法描述" class="headerlink" title="DES算法描述"></a>DES算法描述</h3><blockquote>
+<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>&nbsp;&nbsp;&nbsp;明文和密文分组均为64比特，有效密钥56比特，由初始代换，16轮迭代，逆初始置换组成。轮函数结构是Feistel网络，加解密算法相同，只是加密子秘钥和解密子密钥的使用顺序相反。加密过程<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://ww1.sinaimg.cn/large/0060lm7Tly1fmxoj1ie3vj30go0avgm6.jpg" alt="此处输入图片的描述"></p>
+</blockquote>
+<h3 id="加密过程详解"><a href="#加密过程详解" class="headerlink" title="加密过程详解"></a>加密过程详解</h3><blockquote>
+<h4 id="E—扩展：32比特扩展为48比特"><a href="#E—扩展：32比特扩展为48比特" class="headerlink" title="E—扩展：32比特扩展为48比特"></a>E—扩展：32比特扩展为48比特</h4><p>&nbsp;&nbsp;&nbsp;E盒扩展方法：每个输入分组的4位作为6位输出分组的中间4位，6位输出分组的第一位和第六位分别由相邻两个4位分组的最外两位扩散进入本分组，第一个分组的左侧相邻分组为最后一个分组<img src="http://ww3.sinaimg.cn/large/0060lm7Tly1fmxoutokyhj312j081myy.jpg" alt="E—扩展"></p>
+<h4 id="与子密钥异或："><a href="#与子密钥异或：" class="headerlink" title="与子密钥异或："></a>与子密钥异或：</h4><p>&nbsp;&nbsp;&nbsp;将E盒扩展得到的48位输出与子密钥Ki进行异或运算。</p>
+<h4 id="压缩替换S-盒："><a href="#压缩替换S-盒：" class="headerlink" title="压缩替换S-盒："></a>压缩替换S-盒：</h4><p>&nbsp;&nbsp;&nbsp;由8个S盒组成，每个S盒都是6比特输入，4比特输出。<br>&nbsp;&nbsp;&nbsp;Si(h1h2h3h4h5h6)是对应表Si中（h1h6)行和（h2h3h4h5)列上的值<img src="http://ww3.sinaimg.cn/large/0060lm7Tly1fmxxy9gx1cj30m809d77m.jpg" alt="S-盒的构造"></p>
+</blockquote>
+<blockquote>
+<h4 id="P-置换"><a href="#P-置换" class="headerlink" title="P-置换"></a>P-置换</h4><p>&nbsp;&nbsp;&nbsp;P—置换对8个S-盒的输出进行变换<br>&nbsp;&nbsp;&nbsp;下图为P—置换对应的表格</p>
+</blockquote>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">16</th>
+<th align="center">7</th>
+<th align="center">20</th>
+<th align="center">21</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">29</td>
+<td align="center">12</td>
+<td align="center">28</td>
+<td align="center">17</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">15</td>
+<td align="center">23</td>
+<td align="center">26</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">18</td>
+<td align="center">31</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">8</td>
+<td align="center">24</td>
+<td align="center">14</td>
+</tr>
+<tr>
+<td align="center">32</td>
+<td align="center">27</td>
+<td align="center">3</td>
+<td align="center">9</td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="center">13</td>
+<td align="center">20</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td align="center">11</td>
+<td align="center">4</td>
+<td align="center">25</td>
+</tr>
+<tr>
+<td align="center">#### DES子密钥的生成</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">&nbsp;&nbsp;&nbsp;DES密钥是从初始密钥产生的，初始密钥有64位，其中8位用于奇偶校验，分别位于8,16,24,32,40,48,56,64位，用于检查密钥K在产生和分配以及存储的过程中可能发生的错误，所以说DES密钥实际只有56位。</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><img src="http://ww3.sinaimg.cn/large/0060lm7Tly1fmxyzbu3hzj310v0o87ua.jpg" alt="此处输入图片的描述"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+</blockquote>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

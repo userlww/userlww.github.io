@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      沙子的质量 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="题目：    &amp;nbsp;&amp;nbsp;&amp;nbsp;设有N堆沙子排成一排，其编号为1，2，3，…，N（N&amp;lt; =300）。每堆沙子有一定的数量，可以用一个整数来描述，现在要将这N堆沙子合并成为一堆，每次只能合并相邻的两堆，合并的代价为这两堆沙子的数量之和，合并后与这两堆沙子相邻的沙子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同，如有4堆沙子分别为  1    3    5">
+<meta name="keywords" content="算法,动态规划">
+<meta property="og:type" content="article">
+<meta property="og:title" content="沙子的质量 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/12/03/沙子的质量/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="题目：    &amp;nbsp;&amp;nbsp;&amp;nbsp;设有N堆沙子排成一排，其编号为1，2，3，…，N（N&amp;lt; =300）。每堆沙子有一定的数量，可以用一个整数来描述，现在要将这N堆沙子合并成为一堆，每次只能合并相邻的两堆，合并的代价为这两堆沙子的数量之和，合并后与这两堆沙子相邻的沙子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同，如有4堆沙子分别为  1    3    5">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-12-16T04:28:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="沙子的质量 | Hexo">
+<meta name="twitter:description" content="题目：    &amp;nbsp;&amp;nbsp;&amp;nbsp;设有N堆沙子排成一排，其编号为1，2，3，…，N（N&amp;lt; =300）。每堆沙子有一定的数量，可以用一个整数来描述，现在要将这N堆沙子合并成为一堆，每次只能合并相邻的两堆，合并的代价为这两堆沙子的数量之和，合并后与这两堆沙子相邻的沙子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同，如有4堆沙子分别为  1    3    5">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">沙子的质量</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-12-03" class="post-meta__date date">2017-12-03</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/算法/">算法</a>, <a class="categories-link" href="/categories/算法/动态规划/">动态规划</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/动态规划/">动态规划</a>, <a class="tags-link" href="/tags/算法/">算法</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>题目：  </p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;设有N堆沙子排成一排，其编号为1，2，3，…，N（N&lt; =300）。每堆沙子有一定的数量，可以用一个整数来描述，现在要将这N堆沙子合并成为一堆，每次只能合并相邻的两堆，合并的代价为这两堆沙子的数量之和，合并后与这两堆沙子相邻的沙子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同，如有4堆沙子分别为  1    3    5    2  我们可以先合并1、2堆，代价为4，得到4  5  2  又合并  1，2堆，代价为9，得到9  2  ，再合并得到11，总代价为4+9+11=24，如果第二步是先合并2，3堆，则代价为7，得到4  7，最后一次合并代价为11，总代价为4+7+11=22；</p>
+</blockquote>
+<blockquote>
+<p>问题是：找出一种合理的方法，使总的代价最小。输出最小代价。</p>
+</blockquote>
+<blockquote>
+<p>输入格式：</p>
+</blockquote>
+<blockquote>
+<p>第一行一个数N表示沙子的堆数N。 第二行N个数，表示每堆沙子的质量。  &lt; =1000</p>
+</blockquote>
+<blockquote>
+<p>输出格式：</p>
+</blockquote>
+<blockquote>
+<p>合并的最小代价<br>样例输入</p>
+</blockquote>
+<blockquote>
+<p>4<br>1 3 5 2</p>
+</blockquote>
+<blockquote>
+<p>样例输出</p>
+</blockquote>
+<blockquote>
+<p>22</p>
+</blockquote>
+<blockquote>
+<pre><code> #include&lt;iostream&gt;
+ using namespace std;
+ int min(int x, int y)
+ {
+ if (x &lt;= y)
+   return x;
+ else return y;
+ }
+ int s[1001];
+ int n, a;
+ int f[1001][1001];
+ int main()
+ {
+  cin &gt;&gt;n;
+  for (int i = 1; i &lt;= n; i++)
+ {
+   cin &gt;&gt; a;
+   s[i] = s[i - 1] + a;
+   f[i][i] = 0;
+ }
+  for (int r = 2; r &lt;= n; r++)
+       for (int i = 1; i + r - 1 &lt;= n; i++)
+       {
+           int k = i + r - 1;
+           int t = s[i + r - 1] - s[i - 1];
+           f[i][k] = f[i][i] + f[i + 1][k] + t;
+           for (int j = i + 1; j &lt; k; j++)
+               f[i][k] = min(f[i][k], f[i][j] + f[j + 1][k] + t);
+       }
+   cout &lt;&lt; f[1][n];
+   return 0;
+}</code></pre></blockquote>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

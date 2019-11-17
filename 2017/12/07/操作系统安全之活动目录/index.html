@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      操作系统安全之活动目录 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="活动目录保存的信息&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;每个域控制器活动目录中保存的信息被分为三类：域数据，架构好配置数据 域数据    包含了该域内所有对象信息，这些信息被复制到该域的每一个域控制器（不超出该域的范围）  架构数据    定义了可以在Active Dictionary中存储哪些对象、属性和操作规则。属于目录林的范畴，在林中的每一个域控制器上面存储。  配置数">
+<meta name="keywords" content="操作系统安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统安全之活动目录 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/12/07/操作系统安全之活动目录/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="活动目录保存的信息&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;每个域控制器活动目录中保存的信息被分为三类：域数据，架构好配置数据 域数据    包含了该域内所有对象信息，这些信息被复制到该域的每一个域控制器（不超出该域的范围）  架构数据    定义了可以在Active Dictionary中存储哪些对象、属性和操作规则。属于目录林的范畴，在林中的每一个域控制器上面存储。  配置数">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fm8ed6v496j30mt0hc0wa.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0060lm7Tly1fm8euap6duj30is06u0u3.jpg">
+<meta property="og:updated_time" content="2018-01-27T05:42:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="操作系统安全之活动目录 | Hexo">
+<meta name="twitter:description" content="活动目录保存的信息&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;每个域控制器活动目录中保存的信息被分为三类：域数据，架构好配置数据 域数据    包含了该域内所有对象信息，这些信息被复制到该域的每一个域控制器（不超出该域的范围）  架构数据    定义了可以在Active Dictionary中存储哪些对象、属性和操作规则。属于目录林的范畴，在林中的每一个域控制器上面存储。  配置数">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fm8ed6v496j30mt0hc0wa.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">操作系统安全之活动目录</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-12-07" class="post-meta__date date">2017-12-07</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/课程笔记/">课程笔记</a>, <a class="categories-link" href="/categories/课程笔记/操作系统安全/">操作系统安全</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/操作系统安全/">操作系统安全</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="活动目录保存的信息"><a href="#活动目录保存的信息" class="headerlink" title="活动目录保存的信息"></a>活动目录保存的信息</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个域控制器活动目录中保存的信息被分为三类：域数据，架构好配置数据</p>
+<h4 id="域数据"><a href="#域数据" class="headerlink" title="域数据"></a>域数据</h4><blockquote>
+<p>   包含了该域内所有对象信息，这些信息被复制到该域的每一个域控制器（不超出该域的范围）</p>
+</blockquote>
+<h4 id="架构数据"><a href="#架构数据" class="headerlink" title="架构数据"></a>架构数据</h4><blockquote>
+<p>   定义了可以在Active Dictionary中存储哪些对象、属性和操作规则。属于目录林的范畴，在林中的每一个域控制器上面存储。</p>
+</blockquote>
+<h4 id="配置数据"><a href="#配置数据" class="headerlink" title="配置数据"></a>配置数据</h4><blockquote>
+<p>   定义了复制拓扑及与AD配置有关的其他数据（即其中存在着哪些域，域控制器的位置等等），对域森林中所有域通用，也被复制到域森林中的所有域控制器</p>
+</blockquote>
+<h4 id="若域是GC服务器，还将保存第四种信息"><a href="#若域是GC服务器，还将保存第四种信息" class="headerlink" title="若域是GC服务器，还将保存第四种信息"></a>若域是GC服务器，还将保存第四种信息</h4><blockquote>
+<p>   为所有域保存“域数据”的部分副本（GC保存的属性子集包括那些在搜索操作中最常见的属性）</p>
+</blockquote>
+<h3 id="活动目录管理的对象"><a href="#活动目录管理的对象" class="headerlink" title="活动目录管理的对象"></a>活动目录管理的对象</h3><h4 id="对象的分类"><a href="#对象的分类" class="headerlink" title="对象的分类"></a>对象的分类</h4><p>容器对象</p>
+<blockquote>
+<pre><code>可存储其他对象，如域、组织单元、文件夹等。</code></pre><p>叶对象<br>     不能存储其他对象,如计算机、用户、文件等。</p>
+</blockquote>
+<h4 id="对象的标准属性"><a href="#对象的标准属性" class="headerlink" title="对象的标准属性"></a>对象的标准属性</h4><blockquote>
+<pre><code>1.DN（Distinguishd Name识别名称）和RD（Relative Distinguishd Name相对识别名称）
+    DN定义了LDAP中到对象的完整路径，完整路径包括了对象名称以及直到域根节点的所有父对象名称，DN标识了域层次中的唯一对象，RDN则是DN中属于完整路径属性的一部分
+2.全局唯一标识符（GUID）
+    GUID是在对象创建时由活动目录分配的128位数字，目录数据存储区中的每一对象都具有的唯一标识。GUID不能被修改和删除。
+3.ACL(Access control List)-&gt;对课体而言
+4.安全主体名称   ————&gt;对安全主体而言
+    安全主体分三类：用户，组，计算机。
+    安全主体名称是在单个域用来唯一标识用户，计算机或组的名称
+    安全主体名称在域内必须唯一，而在域见则无需唯一
+5.安全标识符    ————&gt;对安全主体而言</code></pre><p><img src="http://ww4.sinaimg.cn/large/0060lm7Tly1fm8ed6v496j30mt0hc0wa.jpg" alt="RDN和DN的命名规则"></p>
+</blockquote>
+<p>  用户主体名称格式<br>  <img src="http://ww1.sinaimg.cn/large/0060lm7Tly1fm8euap6duj30is06u0u3.jpg" alt="此处输入图片的描述"></p>
+<h3 id="活动目录组件"><a href="#活动目录组件" class="headerlink" title="活动目录组件"></a>活动目录组件</h3><h4 id="组织单元（OU）"><a href="#组织单元（OU）" class="headerlink" title="组织单元（OU）"></a>组织单元（OU）</h4><blockquote>
+<pre><code>用来委派对用户、组及资源集合的管理权限。组织单元是委派管理权限的最小分组，特殊在于可连接组策略  </code></pre></blockquote>
+<h4 id="域"><a href="#域" class="headerlink" title="域"></a>域</h4><blockquote>
+<p>   域是网络中复制和安全管理的基本单元，同一个域中的计算机共享配置，架构和全局编录</p>
+</blockquote>
+<h4 id="域树"><a href="#域树" class="headerlink" title="域树"></a>域树</h4><p>具有连续命名空间的多个域称为树。具有连续命名空间即多个域有相同的上级域名。如</p>
+<blockquote>
+<pre><code>edu.cn--&gt;cumt.edu.cn--&gt;cs.cumt.edu.cn</code></pre><p>目录树中的所有域共享相同的配置，架构和全局编录</p>
+</blockquote>
+<h4 id="域森林"><a href="#域森林" class="headerlink" title="域森林"></a>域森林</h4><blockquote>
+<p>  不构成连续命名空间的域树的集合，通过双向的可传递信任关系链接在一起<br>         如：luweiwen08153400.com和luweiwen08153400.org<br>         在AD中建立的第一个域称为根域。</p>
+</blockquote>
+<h4 id="物理组件———站点"><a href="#物理组件———站点" class="headerlink" title="物理组件———站点"></a>物理组件———站点</h4><blockquote>
+<p>  是指一个由高速连接所形成的较快通信速率网络（一班指局域网LAN)</p>
+</blockquote>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

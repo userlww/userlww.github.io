@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      常见排序算法总结 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="快速排序　　　快速排序是前端面试过程中经常会被提问到的一种排序算法，也是执行效率比较高的一种排序算法，快排的基本思想就是先选中一个基准元素，然后···将大于它的所有元素放到一边，将小于它的所有元素放到另一边，也就是说要先找到基准元素的正确位置，然后对基准元素两边的子数组进行递归调用，最后得到正确的排序结果，废话少说，直接上代码 1234567891011121314151617181920212">
+<meta name="keywords" content="算法，排序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见排序算法总结 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/10/01/常见排序算法总结/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="快速排序　　　快速排序是前端面试过程中经常会被提问到的一种排序算法，也是执行效率比较高的一种排序算法，快排的基本思想就是先选中一个基准元素，然后···将大于它的所有元素放到一边，将小于它的所有元素放到另一边，也就是说要先找到基准元素的正确位置，然后对基准元素两边的子数组进行递归调用，最后得到正确的排序结果，废话少说，直接上代码 1234567891011121314151617181920212">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2018/05/30/15/31/rustic-3441673__340.jpg">
+<meta property="og:updated_time" content="2018-10-01T12:02:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常见排序算法总结 | Hexo">
+<meta name="twitter:description" content="快速排序　　　快速排序是前端面试过程中经常会被提问到的一种排序算法，也是执行效率比较高的一种排序算法，快排的基本思想就是先选中一个基准元素，然后···将大于它的所有元素放到一边，将小于它的所有元素放到另一边，也就是说要先找到基准元素的正确位置，然后对基准元素两边的子数组进行递归调用，最后得到正确的排序结果，废话少说，直接上代码 1234567891011121314151617181920212">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2018/05/30/15/31/rustic-3441673__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">常见排序算法总结</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-10-01" class="post-meta__date date">2018-10-01</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/算法，排序/">算法，排序</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/算法，排序/">算法，排序</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2018/05/30/15/31/rustic-3441673__340.jpg" alt="此处输入图片的描述"></p>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>　　　快速排序是前端面试过程中经常会被提问到的一种排序算法，也是执行效率比较高的一种排序算法，快排的基本思想就是先选中一个基准元素，然后···将大于它的所有元素放到一边，将小于它的所有元素放到另一边，也就是说要先找到基准元素的正确位置，然后对基准元素两边的子数组进行递归调用，最后得到正确的排序结果，废话少说，直接上代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int a[50];</span><br><span class="line">void quickSort(int left,int right) &#123;</span><br><span class="line">	if(left &gt; right) &#123;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	int temp = a[left],</span><br><span class="line">	    i = left,</span><br><span class="line">	    j = right;</span><br><span class="line">	while (i &lt; j) &#123;</span><br><span class="line">		while(i &lt; j &amp;&amp; a[j] &gt;= temp) &#123;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		while(i &lt; j &amp;&amp; a[i] &lt;= temp) &#123;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		int t = 0;</span><br><span class="line">		t = a[i];</span><br><span class="line">		a[i] = a[j];</span><br><span class="line">		a[j] = t;</span><br><span class="line">	&#125;</span><br><span class="line">	a[left] = a[i];</span><br><span class="line">    a[i] = temp;</span><br><span class="line">    quickSort(left,i - 1);</span><br><span class="line">    quickSort(i + 1,right);</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	for(int i = 0; i &lt; n;i++) &#123;</span><br><span class="line">		cin&gt;&gt;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	quickSort(0,n - 1);</span><br><span class="line">	for(int i = 0;i &lt; n;i++) &#123;</span><br><span class="line">		cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;; </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　快速排序的平均算法负责度是O(nlogn),最坏情况则是O（n^2),最坏情况会在数组本身正序，反序或者数组元素全部相同的情况下出现。</p>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>　　归并排序也同样利用了分治递归的思想，具体实现就是将一个数组分割成两个数组分别排序，然后将两个有序数组进行递归的归并排序，平均时间复杂度为O（nlogn）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void Merge(int *A, int *L, int leftCount, int *R, int rightCount) &#123;</span><br><span class="line">	int i = 0,</span><br><span class="line">		j = 0,</span><br><span class="line">		k = 0;   </span><br><span class="line">	while(i &lt; leftCount &amp;&amp; j &lt; rightCount) &#123;</span><br><span class="line">		if (L[i] &lt; R[j]) A[k++] = L[i++];</span><br><span class="line">		else A[k++] = R[j++];</span><br><span class="line">	&#125;</span><br><span class="line">	while (i &lt; leftCount) &#123;</span><br><span class="line">		A[k++] = L[i++];</span><br><span class="line">	&#125;</span><br><span class="line">	while (j &lt; rightCount) &#123;</span><br><span class="line">		A[k++] = R[j++];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">void MergeSort(int *A, int n) &#123;</span><br><span class="line">	int mid, i, *L, *R;</span><br><span class="line">	if (n &lt; 2) return;</span><br><span class="line">	mid = n / 2;</span><br><span class="line">	L = new int[mid];</span><br><span class="line">	R = new int[n - mid];</span><br><span class="line">	for (i = 0; i &lt; mid; i++) L[i] = A[i];</span><br><span class="line">	for (i = mid; i &lt; n; i++) R[i - mid] = A[i];</span><br><span class="line">	MergeSort(L, mid);</span><br><span class="line">	MergeSort(R, n - mid);</span><br><span class="line">	Merge(A, L, mid, R, n - mid);</span><br><span class="line">	delete [] R;</span><br><span class="line">	delete [] L;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int A[] = &#123; 1,5,2,6,7,0,9,10,78,96,111,85 &#125;;</span><br><span class="line">	int i, count;</span><br><span class="line">	count = sizeof(A) / sizeof(A[0]);</span><br><span class="line">	MergeSort(A, count);</span><br><span class="line">	for (i = 0; i &lt; count; i++)</span><br><span class="line">		cout &lt;&lt; A[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>　　冒泡排序是思路比较容易理解的一种方法，使用双层循环判断每两个相邻元素的大小关系，如何是正序则不变，逆序则将其交换。时间复杂度为O（n^2）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void selectSort(int *a, int n) &#123;</span><br><span class="line">	int temp;</span><br><span class="line">    for (int i = 0; i &lt; n - 1; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; n - i - 1; j++) &#123;</span><br><span class="line">			if (a[j] &gt; a[j + 1]) &#123;</span><br><span class="line">				temp = a[j];</span><br><span class="line">				a[j] = a[j+1];</span><br><span class="line">				a[j+1] = temp;   	</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int a[] = &#123; 2,3,1,5,4,9,8,10,95,75,400 &#125;;</span><br><span class="line">	int n = sizeof(a) / sizeof(a[0]);</span><br><span class="line">	selectSort(a, n);</span><br><span class="line">	for (int i = 0; i &lt; n;i++) &#123;</span><br><span class="line">		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>　　选择排序是最容易想到的一种排序算法，时间复杂度Ｏ（ｎ＾２）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void selectSort(int *a, int n) &#123;</span><br><span class="line">	int temp;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">		for (int j = i + 1; j &lt; n; j++) &#123;</span><br><span class="line">			if (a[i] &gt; a[j]) &#123;</span><br><span class="line">				temp = a[i];</span><br><span class="line">				a[i] = a[j];</span><br><span class="line">				a[j] = temp;   	</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int a[] = &#123; 2,3,1,5,4,9,8,10,95,75,400 &#125;;</span><br><span class="line">	int n = sizeof(a) / sizeof(a[0]);</span><br><span class="line">	selectSort(a, n);</span><br><span class="line">	for (int i = 0; i &lt; n;i++) &#123;</span><br><span class="line">		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

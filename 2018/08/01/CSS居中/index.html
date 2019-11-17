@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      CSS居中 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="preface　　简单总结一下CSS中的水平与垂直居中的解决方案，分为内联和块状元素的居中,写的比较基础，大佬可以忽略。 内联元素的居中水平居中 为容器设置text-align:center  123&amp;lt;div class=&amp;quot;text1&amp;quot;&amp;gt;&amp;lt;span&amp;gt;使用text-align水平居中&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;  　对应的样式 12">
+<meta name="keywords" content="CSS,居中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS居中 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/08/01/CSS居中/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="preface　　简单总结一下CSS中的水平与垂直居中的解决方案，分为内联和块状元素的居中,写的比较基础，大佬可以忽略。 内联元素的居中水平居中 为容器设置text-align:center  123&amp;lt;div class=&amp;quot;text1&amp;quot;&amp;gt;&amp;lt;span&amp;gt;使用text-align水平居中&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;  　对应的样式 12">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2017/06/05/14/55/glass-2374311__340.jpg">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/0060lm7Tly1ftg6q9ey7yj30mq02xmxg.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/0060lm7Tly1ftgb9e51thj31fk01vt8u.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/0060lm7Tly1ftm7ia49pdj307n07qglh.jpg">
+<meta property="og:updated_time" content="2018-08-15T00:04:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS居中 | Hexo">
+<meta name="twitter:description" content="preface　　简单总结一下CSS中的水平与垂直居中的解决方案，分为内联和块状元素的居中,写的比较基础，大佬可以忽略。 内联元素的居中水平居中 为容器设置text-align:center  123&amp;lt;div class=&amp;quot;text1&amp;quot;&amp;gt;&amp;lt;span&amp;gt;使用text-align水平居中&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;  　对应的样式 12">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2017/06/05/14/55/glass-2374311__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">CSS居中</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-08-01" class="post-meta__date date">2018-08-01</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/前端/">前端</a>, <a class="categories-link" href="/categories/前端/CSS/">CSS</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/CSS/">CSS</a>, <a class="tags-link" href="/tags/居中/">居中</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2017/06/05/14/55/glass-2374311__340.jpg" alt="此处输入图片的描述"></p>
+<h3 id="preface"><a href="#preface" class="headerlink" title="preface"></a>preface</h3><p>　　简单总结一下CSS中的水平与垂直居中的解决方案，分为内联和块状元素的居中,写的比较基础，大佬可以忽略。</p>
+<h3 id="内联元素的居中"><a href="#内联元素的居中" class="headerlink" title="内联元素的居中"></a>内联元素的居中</h3><h4 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h4><ul>
+<li>为容器设置text-align:center</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;text1&quot;&gt;</span><br><span class="line">&lt;span&gt;使用text-align水平居中&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>　对应的样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.text1 &#123;</span><br><span class="line">            text-align: center;</span><br><span class="line">            background-color:red;</span><br><span class="line">            font-size: 3rem;</span><br><span class="line">            color: white;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>　效果<br>　　<img src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1ftg6q9ey7yj30mq02xmxg.jpg" alt="text-align居中"></p>
+<ul>
+<li>flex设置居中<br>　为容器设置display:flex; justify-content:center<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;text2&quot;&gt;</span><br><span class="line">     &lt;span&gt;使用flex设置居中&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>　　样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　.text2 &#123;</span><br><span class="line">display: flex;</span><br><span class="line">font-size: 3rem;</span><br><span class="line">justify-content: center;</span><br><span class="line">background: yellow;</span><br><span class="line">color: #000c17;</span><br><span class="line">        　&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　效果<br>　　<img src="http://wx3.sinaimg.cn/mw690/0060lm7Tly1ftgb9e51thj31fk01vt8u.jpg" alt="此处输入图片的描述"></p>
+<h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3><p>   　　如果是单行文本的话，可以让其父元素的高度等于其line-height，即可实现单行文本的垂直居</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  　&lt;div class=&quot;text3&quot;&gt;</span><br><span class="line">&lt;span&gt;使用line—height垂直居中&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>　　样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">　　　　.text3 &#123;</span><br><span class="line">                height:500px;</span><br><span class="line">                text-align: center;</span><br><span class="line">                line-height: 500px;</span><br><span class="line">                background-color: green;</span><br><span class="line">            &#125;</span><br><span class="line">        .text3 span &#123;</span><br><span class="line">            color: white;</span><br><span class="line">            font-size: 3rem;</span><br><span class="line">        &#125;</span><br><span class="line">```      </span><br><span class="line">　　效果</span><br><span class="line">　　![此处输入图片的描述][4]</span><br><span class="line">　　如果是多行文本,则可以借助表格的一些属性实现垂直居中，给父元素设置display:table,子元素设置display：table-cell;vertical-align：middle，可以实现多行文本的垂直居中，有一个需要注意的地方是，表格的宽度是会根据内容的宽度自动拉伸的，所以若要实现和div一样的宽度适应屏幕宽度的话需要给父元素设置width：100%</span><br></pre></td></tr></table></figure>
+
+<div class="text4">
+    <span>
+        Lorem ipsum dolor sit amet,consectetur adipisicing elit. Atque aut culpa, dignissimos eligendi est<br>
+        hic impedit, inventore, laudantium nobis praesentium quaerat quasi rem sapiente sequi similique <br>
+        teneturvel voluptate voluptates!*100
+    </span>
+</div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　样式</span><br></pre></td></tr></table></figure>
+
+<p> .text4 {<br>        　　background: #2db7f5;<br>            height: 400px;<br>            display: table;<br>            font-size:1rem;<br>            width: 100%;<br>            text-align: center;<br>        }<br> .text4 span {<br>            display: table-cell;<br>            vertical-align: middle;<br>            color: white;<br>            font-size: 1rem;<br>        }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　效果</span><br><span class="line">　　![此处输入图片的描述][5]</span><br><span class="line">### 块状元素居中</span><br><span class="line">#### 水平居中</span><br><span class="line"></span><br><span class="line"> - 定宽块状元素居中</span><br><span class="line"> 　定宽块状元素水平居中只需设置左右margin 为auto即可</span><br></pre></td></tr></table></figure>
+
+<div class="container">
+    <div class="block1"></div>
+</div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　样式</span><br></pre></td></tr></table></figure>
+
+<pre><code>.block1 {
+    width: 200px;
+    height: 200px;
+    background: yellow;
+    margin:  auto;
+}</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">　　效果</span><br><span class="line">　　![此处输入图片的描述][6]</span><br><span class="line">　</span><br><span class="line"></span><br><span class="line">- 不定宽块状元素居中</span><br><span class="line">　　使用flex布局，设置父元素justify-content:center;display:flex</span><br></pre></td></tr></table></figure>
+
+<div class="block2">
+    <div class="blockChild">
+        观世音菩萨，行深般若波罗蜜多时，照见五蕴皆空，度一切苦厄<br>
+        舍利子，色不异空，空不异色，色即是空，空即是色，受想行识，亦复如是<br>
+        舍利子，是诸法空相，不生不灭。不垢不净，不增不减，是故空中无色，无受想行识，无眼界
+        <br>
+    </div>
+</div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">　　　样式</span><br></pre></td></tr></table></figure>
+
+<p> .block2 {<br>            display: flex;<br>            height: 500px;<br>            background-color: #e3d2d2;<br>            justify-content: center;<br>            align-items: center;<br>        }<br>        .blockChild {<br>            height: 300px;<br>            background-color: #d06b64;<br>        }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">　　效果</span><br><span class="line">　　![此处输入图片的描述][7]</span><br><span class="line">#### 垂直居中</span><br><span class="line"></span><br><span class="line"> - 绝对定位的方法居中,使用负外边距实现</span><br></pre></td></tr></table></figure>
+
+<div>
+    <div class="block3"></div>
+</div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　样式</span><br></pre></td></tr></table></figure>
+
+<p>.block3 {<br>            position: absolute;<br>            top: 50%;<br>            left: 50%;<br>            margin-top: -100px;<br>            margin-left: -100px;<br>            width: 100px;<br>            height: 100px;<br>            background-color: green;</p>
+<pre><code>}</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  　　效果</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">![此处输入图片的描述][8]</span><br><span class="line"></span><br><span class="line"> - 使用绝对定位实现</span><br></pre></td></tr></table></figure>
+
+<div class="block4"></div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　样式</span><br></pre></td></tr></table></figure>
+
+<p>.block4 {<br>            position: absolute;<br>            top:0;<br>            left: 0;<br>            bottom: 0;<br>            right: 0;<br>            margin: auto;<br>            width: 200px;<br>            height: 200px;<br>            background-color: orange;<br>        }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">　　效果</span><br><span class="line"></span><br><span class="line">![此处输入图片的描述][9]</span><br><span class="line"></span><br><span class="line"> - 使用CSS3的transform属性</span><br></pre></td></tr></table></figure>
+
+<div class="block5"></div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">样式</span><br></pre></td></tr></table></figure>
+
+<pre><code>.block5 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 300px;
+    height: 300px;
+    background-color: navy;
+
+}</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　效果</span><br><span class="line">　　![此处输入图片的描述][10]</span><br><span class="line"></span><br><span class="line"> - 使用伪元素来实现居中</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">    &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">        .box &#123;</span><br><span class="line">            width: 300px;</span><br><span class="line">            height:300px;</span><br><span class="line">            border: 1px solid #ccc;</span><br><span class="line">            text-align: center;</span><br><span class="line">        &#125;</span><br><span class="line">        .content &#123;</span><br><span class="line">            width: 200px;</span><br><span class="line">            height: 200px;</span><br><span class="line">            background-color: orange;</span><br><span class="line">            display: inline-block;</span><br><span class="line">            vertical-align: middle;</span><br><span class="line">        &#125;</span><br><span class="line">        .box:after &#123;</span><br><span class="line">            content: &apos;&apos;;</span><br><span class="line">            display: inline-block;</span><br><span class="line">            width: 0;</span><br><span class="line">            height: 100%;</span><br><span class="line">            vertical-align: middle;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&apos;box&apos;&gt;</span><br><span class="line">    &lt;div class=&apos;content&apos;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>　　效果<br>     　　　　　　　　　　　<img src="http://wx3.sinaimg.cn/mw690/0060lm7Tly1ftm7ia49pdj307n07qglh.jpg" alt="此处输入图片的描述"><br>　以上就是我所了解的CSS解决元素居中问题的一些方案，总的来说flex布局和grid布局是比较先进的解决方案，若以后有其他比较好的解决方案还会持续更新。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://zhuanlan.zhihu.com/p/24070633" target="_blank" rel="noopener">知乎专栏：前端进击者：CSS垂直居中和水平居中</a><br><a href="https://www.jianshu.com/p/b45f4d8ca372" target="_blank" rel="noopener">CSS：使用伪元素做水平垂直居中的微深入研究</a></p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

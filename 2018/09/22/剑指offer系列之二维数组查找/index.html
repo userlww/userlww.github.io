@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      剑指offer系列之二维数组查找 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="题目描述　　在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。 实现代码1234567891011121314151617181920212223242526function find(target,array) &amp;#123;    let rowLeng">
+<meta name="keywords" content="剑指offer,二维数组查找">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指offer系列之二维数组查找 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/09/22/剑指offer系列之二维数组查找/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="题目描述　　在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。 实现代码1234567891011121314151617181920212223242526function find(target,array) &amp;#123;    let rowLeng">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2018/08/23/00/11/girl-3624936__340.jpg">
+<meta property="og:updated_time" content="2018-09-22T03:35:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="剑指offer系列之二维数组查找 | Hexo">
+<meta name="twitter:description" content="题目描述　　在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。 实现代码1234567891011121314151617181920212223242526function find(target,array) &amp;#123;    let rowLeng">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2018/08/23/00/11/girl-3624936__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">剑指offer系列之二维数组查找</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-09-22" class="post-meta__date date">2018-09-22</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/算法/">算法</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/二维数组查找/">二维数组查找</a>, <a class="tags-link" href="/tags/剑指offer/">剑指offer</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2018/08/23/00/11/girl-3624936__340.jpg" alt="此处输入图片的描述"></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>　　在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
+<h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">function find(target,array) &#123;</span><br><span class="line">    let rowLength = array.length</span><br><span class="line">    let colLength = array[0].length</span><br><span class="line">    for(let i = rowLength - 1,j = 0 ;i &lt; rowLength;i &gt; 0 &amp;&amp; j &lt; colLength) &#123;</span><br><span class="line">        if (target == array[i][j]) &#123;</span><br><span class="line">            console.log(i,j)</span><br><span class="line">            return true</span><br><span class="line">        &#125;</span><br><span class="line">        else if (target &gt; array[i][j]) &#123;</span><br><span class="line">            j++</span><br><span class="line">            continue</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            i--</span><br><span class="line">            continue</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    return false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">let arr1 = new Array([1,3,5],[7,9,11])</span><br><span class="line">console.log(find(5,arr1))</span><br></pre></td></tr></table></figure>
+
+<p>　　实现的思路就是数组的左下角的一个元素它向上是递减的，向右是递增的，因此当我们要查找的元素大于arr[col][row]时，就向右移动一列，小于arr[col][row]时，则向上移动一行</p>
+<h3 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h3><p>上述这种实现方案的时间复杂度为O（n）</p>
+<h3 id="投机取巧"><a href="#投机取巧" class="headerlink" title="投机取巧"></a>投机取巧</h3><p>　　使用JavaScript中的一个数组原型方法，即some方法，用于对数组中的每个元素执行一次某个方法，返回是否有元素匹配当前的指定条件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Find(target, array)</span><br><span class="line">&#123;</span><br><span class="line">    return array.some(arr=&gt;arr.some(e=&gt;e===target))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  <a href="https://cdn.pixabay.com/photo/2018/08/23/00/11/girl-3624936__340.jpg" target="_blank" rel="noopener">1</a>: <a href="https://cdn.pixabay.com/photo/2018/02/04/19/18/sun-3130638__340.jpghttps://cdn.pixabay.com/photo/2018/02/04/19/18/sun-3130638__340.jpg" target="_blank" rel="noopener">https://cdn.pixabay.com/photo/2018/02/04/19/18/sun-3130638__340.jpghttps://cdn.pixabay.com/photo/2018/02/04/19/18/sun-3130638__340.jpg</a> array)<br>{<br>    return array.some(arr=&gt;arr.some(e=&gt;e===target))<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">  [1]: https://cdn.pixabay.com/photo/2016/08/09/10/18/review-1580255__340.jpgjpg array)</span><br><span class="line">&#123;</span><br><span class="line">    return array.some(arr=&gt;arr.some(e=&gt;e===target))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  <a href="https://cdn.pixabay.com/photo/2018/08/23/00/11/girl-3624936__340.jpg" target="_blank" rel="noopener">1</a>: <a href="https://cdn.pixabay.com/photo/2017/03/29/11/45/dunes-2184976_960_720.jpgpgjpg" target="_blank" rel="noopener">https://cdn.pixabay.com/photo/2017/03/29/11/45/dunes-2184976_960_720.jpgpgjpg</a> array)<br>{<br>    return array.some(arr=&gt;arr.some(e=&gt;e===target))<br>}<br>```</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

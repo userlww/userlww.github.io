@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      分组密码概述 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="分组密码分组密码概述&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在说DES之前呢，先来说一下分组密码，因为DES是一种比较典型的分组密码算法，分组密码是将明文划分成长度为m(如m=64或者128）的分组P=(P0,P1,…Pm-1),各分组分别在长为t的密钥K=（K0,K1….,Kt-1)的控制下变为长为n的密文分组C=（C0,C1,…Cn-1)。一般来说（m=n)过">
+<meta name="keywords" content="密码学,分组密码,信息安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分组密码概述 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/12/27/分组密码概述/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="分组密码分组密码概述&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在说DES之前呢，先来说一下分组密码，因为DES是一种比较典型的分组密码算法，分组密码是将明文划分成长度为m(如m=64或者128）的分组P=(P0,P1,…Pm-1),各分组分别在长为t的密钥K=（K0,K1….,Kt-1)的控制下变为长为n的密文分组C=（C0,C1,…Cn-1)。一般来说（m=n)过">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/0060lm7Tly1fmv505g86lj30q007lq3i.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0060lm7Tly1fmvm7o5krbj30ly07g3yr.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fmvmnqlvnkj30p408ymxz.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/0060lm7Tly1fmvp3gd61cj30jz08g768.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/0060lm7Tly1fmvpb4jurqj30go0ce43x.jpg">
+<meta property="og:updated_time" content="2017-12-27T14:41:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分组密码概述 | Hexo">
+<meta name="twitter:description" content="分组密码分组密码概述&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在说DES之前呢，先来说一下分组密码，因为DES是一种比较典型的分组密码算法，分组密码是将明文划分成长度为m(如m=64或者128）的分组P=(P0,P1,…Pm-1),各分组分别在长为t的密钥K=（K0,K1….,Kt-1)的控制下变为长为n的密文分组C=（C0,C1,…Cn-1)。一般来说（m=n)过">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/0060lm7Tly1fmv505g86lj30q007lq3i.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">分组密码概述</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-12-27" class="post-meta__date date">2017-12-27</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/密码学/">密码学</a>, <a class="categories-link" href="/categories/密码学/分组密码/">分组密码</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/信息安全/">信息安全</a>, <a class="tags-link" href="/tags/分组密码/">分组密码</a>, <a class="tags-link" href="/tags/密码学/">密码学</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <blockquote>
+<h3 id="分组密码"><a href="#分组密码" class="headerlink" title="分组密码"></a>分组密码</h3><h4 id="分组密码概述"><a href="#分组密码概述" class="headerlink" title="分组密码概述"></a>分组密码概述</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在说DES之前呢，先来说一下分组密码，因为DES是一种比较典型的分组密码算法，分组密码是将明文划分成长度为m(如m=64或者128）的分组P=(P0,P1,…Pm-1),各分组分别在长为t的密钥K=（K0,K1….,Kt-1)的控制下变为长为n的密文分组C=（C0,C1,…Cn-1)。一般来说（m=n)<br>过程如图：<img src="http://ww2.sinaimg.cn/large/0060lm7Tly1fmv505g86lj30q007lq3i.jpg" alt="此处输入图片的描述"></p>
+</blockquote>
+<blockquote>
+<h4 id="分组密码特点"><a href="#分组密码特点" class="headerlink" title="分组密码特点"></a>分组密码特点</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.速度快、安全性较高，易于标准化和便于硬件实现<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.是信息与网络安全中实现数据保密性的核心机制，在计算机通信和信息系统安全领域有着广泛的应用<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.是构造伪随机数生成器、序列密码消息认证码和Hash函数的方法</p>
+<h4 id="分组密码的设计要求"><a href="#分组密码的设计要求" class="headerlink" title="分组密码的设计要求"></a>分组密码的设计要求</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2的m次方要足够大，防止明文穷举攻击<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.密钥密钥量要足够大，防止密钥穷举攻击<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.密码变换足够复杂，使攻击者除了穷举攻击之外，找不到其他简单的数学攻击方法<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.加密和解密运算简单，便于软件和硬件的实现<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.没有数据扩展和压缩</p>
+<h4 id="分组密码的设计思想"><a href="#分组密码的设计思想" class="headerlink" title="分组密码的设计思想"></a>分组密码的设计思想</h4><h5 id="香农提出的密码系统设计的三个基本原则"><a href="#香农提出的密码系统设计的三个基本原则" class="headerlink" title="香农提出的密码系统设计的三个基本原则"></a>香农提出的密码系统设计的三个基本原则</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.扩散<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.混淆<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.乘积密码</p>
+<h4 id="扩散原则（移位）"><a href="#扩散原则（移位）" class="headerlink" title="扩散原则（移位）"></a>扩散原则（移位）</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密钥或者明文的每一比特变化影响密文的许多比特的变化，以便隐蔽明文的统计特性（雪崩效应）</p>
+<h4 id="混淆原则"><a href="#混淆原则" class="headerlink" title="混淆原则"></a>混淆原则</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密钥和明文以及密文之间的关系尽量复杂化,以防止通过统计分析法进行破译，注意混淆的过程必须是可逆的</p>
+<h5 id="乘积密码体制"><a href="#乘积密码体制" class="headerlink" title="乘积密码体制"></a>乘积密码体制</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;香农在《保密系统的信息理论》中介绍的一个新思想：为了加强密码系统的保密性，常常采用多个密码复合的方法，就是所谓的乘积密码<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R1和R2的乘积密码体制R1<em>R2定义为（P，C，K1</em>K2，E,D）。R1*R2中的加密和解密变换如下： </p>
+</blockquote>
+<blockquote>
+<pre><code>加密变换：
+    EK（x)=Ek2(Ek1（x))
+对任意密文y∈CH和密钥 k =(k1,k2),解密变换为
+    Dk(y)=Dk1(Dk2(y))
+显然有
+    Dk(Ek(x))=Dk(Ek2(Ek1(X)))
+             =Dk1(Dk2(Ek2(Ek1(x))))
+             =Dk1(Ek1(x))</code></pre></blockquote>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码体制的乘积运算满足结合律，假设R是一个明文空间和密文你空间相同的密码体制<br>            R=R<em>R</em>R*…R</p>
+</blockquote>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                     称为迭代密码体制。如果R*R=R,则称R是幂等的密码体制，若R是一个幂等的迭代密码体制，则没有必要使用迭代密码体制。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设K是一个定长的主密钥，密钥编排方案用K生成Nr轮个子秘钥ki。轮函数g以轮密钥Ki和当前状态Wi-1作为输入。初始状态W0被定义为明文x，密文y定义为经过所有Nr轮加密后的状态WNr<br><img src="http://ww1.sinaimg.cn/large/0060lm7Tly1fmvm7o5krbj30ly07g3yr.jpg" alt="此处输入图片的描述"></p>
+</blockquote>
+<blockquote>
+<h4 id="分组密码的迭代结构"><a href="#分组密码的迭代结构" class="headerlink" title="分组密码的迭代结构"></a>分组密码的迭代结构</h4></blockquote>
+<blockquote>
+<ol>
+<li>Feistl网络<br>&nbsp;&nbsp;&nbsp;优点在于加解密相似，只需要一个逆转的密钥编排算法，其加解密部分几乎完全相同，以F表示轮函数（不一定可逆），K0,K1….Kn表示第1,2,…n+1轮子秘钥，则加解密的过程可如下表<br><img src="http://ww4.sinaimg.cn/large/0060lm7Tly1fmvmnqlvnkj30p408ymxz.jpg" alt="此处输入图片的描述"><br>&nbsp;&nbsp;&nbsp;Feistel网络的雪崩效应：假设轮函数的输入最右边一比特发生变化，至少影响轮函数输出两比特的变化<ol start="2">
+<li>SP网络<br>&nbsp;&nbsp;&nbsp;SP网络是由多重S变换和P变换组成的变换网络，基本操作是S变换（代换）和P变换（置换），前者称为S盒，后者称为P盒，S盒起到混乱作用，P盒起到扩散作用<br><img src="http://ww3.sinaimg.cn/large/0060lm7Tly1fmvp3gd61cj30jz08g768.jpg" alt="S盒和P盒"><br>分组密码的示意图<br><img src="http://ww3.sinaimg.cn/large/0060lm7Tly1fmvpb4jurqj30go0ce43x.jpg" alt="此处输入图片的描述"></li>
+</ol>
+</li>
+</ol>
+</blockquote>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

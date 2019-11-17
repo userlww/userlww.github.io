@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      前端跨域的解决方案 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="什么是跨域&amp;nbsp;&amp;nbsp;&amp;nbsp;跨域是指一个域下的文档或脚本试图去请求另一个域下的资源。  资源跳转：超链接 重定向 表单提交 资源嵌入: &amp;lt;link&amp;gt; &amp;lt;script&amp;gt; &amp;lt;iframe&amp;gt;等标签；以及css中的background:url();等文件外链的引入。 脚本请求：js发起的ajax请求，dom和js对象的跨域操作等；我们通常说的跨域是狭">
+<meta name="keywords" content="前端,跨域">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端跨域的解决方案 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/03/12/前端跨域的解决方案/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是跨域&amp;nbsp;&amp;nbsp;&amp;nbsp;跨域是指一个域下的文档或脚本试图去请求另一个域下的资源。  资源跳转：超链接 重定向 表单提交 资源嵌入: &amp;lt;link&amp;gt; &amp;lt;script&amp;gt; &amp;lt;iframe&amp;gt;等标签；以及css中的background:url();等文件外链的引入。 脚本请求：js发起的ajax请求，dom和js对象的跨域操作等；我们通常说的跨域是狭">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2018/02/24/20/39/clock-3179167__340.jpg">
+<meta property="og:updated_time" content="2018-03-12T02:18:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端跨域的解决方案 | Hexo">
+<meta name="twitter:description" content="什么是跨域&amp;nbsp;&amp;nbsp;&amp;nbsp;跨域是指一个域下的文档或脚本试图去请求另一个域下的资源。  资源跳转：超链接 重定向 表单提交 资源嵌入: &amp;lt;link&amp;gt; &amp;lt;script&amp;gt; &amp;lt;iframe&amp;gt;等标签；以及css中的background:url();等文件外链的引入。 脚本请求：js发起的ajax请求，dom和js对象的跨域操作等；我们通常说的跨域是狭">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2018/02/24/20/39/clock-3179167__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">前端跨域的解决方案</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-03-12" class="post-meta__date date">2018-03-12</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/前端/">前端</a>, <a class="categories-link" href="/categories/前端/面试/">面试</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/前端/">前端</a>, <a class="tags-link" href="/tags/跨域/">跨域</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2018/02/24/20/39/clock-3179167__340.jpg" alt="此处输入图片的描述"></p>
+<h3 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h3><p>&nbsp;&nbsp;&nbsp;跨域是指一个域下的文档或脚本试图去请求另一个域下的资源。</p>
+<ul>
+<li>资源跳转：超链接 重定向 表单提交</li>
+<li>资源嵌入: &lt;link&gt; &lt;script&gt; &lt;iframe&gt;等标签；以及css中的background:url();等文件外链的引入。</li>
+<li>脚本请求：js发起的ajax请求，dom和js对象的跨域操作等；<br>我们通常说的跨域是狭义的，是由浏览器同源策略限制的一类请求场景<h4 id="什么是同源策略"><a href="#什么是同源策略" class="headerlink" title="什么是同源策略"></a>什么是同源策略</h4>&nbsp;&nbsp;&nbsp;同源策略SOP是一种约定，是浏览器最核心也是最基本的安全功能,如果少了同源策略，浏览器很容易收到XSS和CSFR等攻击，同源是指“协议+域名+端口”三者相同，即便两个不同域名指向同一个ip地址，也非同源。<h4 id="同源策略限制的行为"><a href="#同源策略限制的行为" class="headerlink" title="同源策略限制的行为"></a>同源策略限制的行为</h4></li>
+<li>Cookie,localstorage和indexDB无法读取</li>
+<li>Dom和js对象无法获得</li>
+<li>Ajax请求无法发送</li>
+</ul>
+<p>  常见的跨域场景<br>未完待续</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

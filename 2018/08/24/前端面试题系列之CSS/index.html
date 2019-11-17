@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      前端面试题系列之CSS | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="preface　　最近一直在投简历面试，不得不说找工作真的不是一件容易的事情，打算写一个系列的文章，总结一下经常遇到的面试题，这一篇用来总结CSS，CSS考察的内容基本是布局相关的内容，下面尽可能详细的罗列一下遇到的面试题 盒模型　　盒模型是浏览器渲染引擎在解析文档的时候，会将所有页面元素表示成一个矩形的盒子，CSS属性用来规定盒子的样式和布局，盒模型分为标准盒模型和怪异盒模型，也有叫做W3C盒">
+<meta name="keywords" content="CSS,面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试题系列之CSS | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/08/24/前端面试题系列之CSS/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="preface　　最近一直在投简历面试，不得不说找工作真的不是一件容易的事情，打算写一个系列的文章，总结一下经常遇到的面试题，这一篇用来总结CSS，CSS考察的内容基本是布局相关的内容，下面尽可能详细的罗列一下遇到的面试题 盒模型　　盒模型是浏览器渲染引擎在解析文档的时候，会将所有页面元素表示成一个矩形的盒子，CSS属性用来规定盒子的样式和布局，盒模型分为标准盒模型和怪异盒模型，也有叫做W3C盒">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2018/08/14/05/17/crow-3604685__340.jpg">
+<meta property="og:image" content="https://developer.mozilla.org/files/72/boxmodel%20%281%29.png">
+<meta property="og:updated_time" content="2018-08-24T01:41:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端面试题系列之CSS | Hexo">
+<meta name="twitter:description" content="preface　　最近一直在投简历面试，不得不说找工作真的不是一件容易的事情，打算写一个系列的文章，总结一下经常遇到的面试题，这一篇用来总结CSS，CSS考察的内容基本是布局相关的内容，下面尽可能详细的罗列一下遇到的面试题 盒模型　　盒模型是浏览器渲染引擎在解析文档的时候，会将所有页面元素表示成一个矩形的盒子，CSS属性用来规定盒子的样式和布局，盒模型分为标准盒模型和怪异盒模型，也有叫做W3C盒">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2018/08/14/05/17/crow-3604685__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">前端面试题系列之CSS</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-08-24" class="post-meta__date date">2018-08-24</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/面试/">面试</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/CSS/">CSS</a>, <a class="tags-link" href="/tags/面试/">面试</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2018/08/14/05/17/crow-3604685__340.jpg" alt="此处输入图片的描述"></p>
+<h3 id="preface"><a href="#preface" class="headerlink" title="preface"></a>preface</h3><p>　　最近一直在投简历面试，不得不说找工作真的不是一件容易的事情，打算写一个系列的文章，总结一下经常遇到的面试题，这一篇用来总结CSS，CSS考察的内容基本是布局相关的内容，下面尽可能详细的罗列一下遇到的面试题</p>
+<h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><p>　　盒模型是浏览器渲染引擎在解析文档的时候，会将所有页面元素表示成一个矩形的盒子，CSS属性用来规定盒子的样式和布局，盒模型分为标准盒模型和怪异盒模型，也有叫做W3C盒模型和IE盒模型，盒模型从内到外分别是content，即内容部分，padding，即内边距，border，即边框部分，以及最外边的margin，即外边距部分（图片来自MDN）<br>　<br>　               　      　　　　<img src="https://developer.mozilla.org/files/72/boxmodel%20%281%29.png" alt="此处输入图片的描述"><br>    　　<br>    　标准盒模型和怪异盒模型的区别在于，标准盒模型在计算元素宽度的时候只包含content部分，而怪异盒模型在计算的时候会将元素的padding和border部分计算在内，即怪异盒模型的元素宽度包含padding和border而标准盒模型不包含，浏览器一般默认的为标准盒模型，在CSS3中新增了一个box-sizing的属性，可以在标准盒模型和怪异盒模型之间切换，默认的是content-box即标准盒模型，若属性值为border-box则表现为怪异盒模型。</p>
+<h3 id="居中问题"><a href="#居中问题" class="headerlink" title="居中问题"></a>居中问题</h3><p>　　居中问题也是前端面试中经常被问到的CSS相关的问题，关于这个问题我之前做了比较详细的总结，有需要的可以看我这篇文章<a href="http://lwwmaxwell.cn/2018/08/01/CSS%E5%B1%85%E4%B8%AD/" target="_blank" rel="noopener">CSS居中–Maxwell’workspace</a></p>
+<h3 id="三角形的实现方案"><a href="#三角形的实现方案" class="headerlink" title="三角形的实现方案"></a>三角形的实现方案</h3><p>   同样这个问题我之前也有做过记录<a href="http://lwwmaxwell.cn/2018/08/01/CSS%E4%B8%89%E8%A7%92%E5%BD%A2/" target="_blank" rel="noopener">CSS三角形–Maxwell’workspace</a></p>
+<h3 id="清除浮动的几种方法"><a href="#清除浮动的几种方法" class="headerlink" title="清除浮动的几种方法"></a>清除浮动的几种方法</h3><ul>
+<li>添加空标签来清除浮动，在需要清除浮动的元素后面添加一个空元素，并设置属性：clear：both</li>
+<li>为父元素设置伪类after：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.float-div::after&#123;</span><br><span class="line">           display: block;</span><br><span class="line">           clear: both;</span><br><span class="line">           content: &apos;&apos;;</span><br><span class="line">           height: 0px;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li>为父元素设置overflow：hidden </li>
+</ul>
+<p>　　</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      block, inline,inline-block对比 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;今天撸页面的时候用到了display属性，看到了ws给的备选属性值，突然想inline-block和inline还有block到底有什么区别，于是翻了一下CSS权威指南，看了之后写一点自己的理解  inline ：属性值为inline表示以行内元素的形式显示，即不会独占一行，后面的行内元素将和该元素在同一行内显示，只有当容器的宽度不够使才会换行。 block：属">
+<meta name="keywords" content="CSS,display">
+<meta property="og:type" content="article">
+<meta property="og:title" content="block, inline,inline-block对比 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/01/08/block-inline-inline-block对比/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;今天撸页面的时候用到了display属性，看到了ws给的备选属性值，突然想inline-block和inline还有block到底有什么区别，于是翻了一下CSS权威指南，看了之后写一点自己的理解  inline ：属性值为inline表示以行内元素的形式显示，即不会独占一行，后面的行内元素将和该元素在同一行内显示，只有当容器的宽度不够使才会换行。 block：属">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2016/09/29/17/05/hourglass-1703349__340.jpg">
+<meta property="og:updated_time" content="2018-01-28T12:10:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="block, inline,inline-block对比 | Hexo">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;今天撸页面的时候用到了display属性，看到了ws给的备选属性值，突然想inline-block和inline还有block到底有什么区别，于是翻了一下CSS权威指南，看了之后写一点自己的理解  inline ：属性值为inline表示以行内元素的形式显示，即不会独占一行，后面的行内元素将和该元素在同一行内显示，只有当容器的宽度不够使才会换行。 block：属">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2016/09/29/17/05/hourglass-1703349__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">block, inline,inline-block对比</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-08" class="post-meta__date date">2018-01-08</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/前端/">前端</a>, <a class="categories-link" href="/categories/前端/CSS/">CSS</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/CSS/">CSS</a>, <a class="tags-link" href="/tags/display/">display</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2016/09/29/17/05/hourglass-1703349__340.jpg" alt="此处输入图片的描述"><br>&nbsp;&nbsp;&nbsp;今天撸页面的时候用到了display属性，看到了ws给的备选属性值，突然想inline-block和inline还有block到底有什么区别，于是翻了一下CSS权威指南，看了之后写一点自己的理解</p>
+<ul>
+<li>inline ：属性值为inline表示以行内元素的形式显示，即不会独占一行，后面的行内元素将和该元素在同一行内显示，只有当容器的宽度不够使才会换行。</li>
+<li>block：属性值为block表示以块状元素显示，无论容器的宽度是否足够。</li>
+<li>inline-block：属性值为inline-block表示行内块元素，即元素本身以行内元素显示，元素的内容以块状元素显示。</li>
+</ul>
+<p>附上我撸的一个demo。具体呈现<br> <a href="https://github.com/userlww/practice/blob/master/css/demo_1.html" target="_blank" rel="noopener">display属性值辨析</a></p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

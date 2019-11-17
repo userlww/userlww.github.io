@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      CSS盒模型之父元素margin-top为什么会影响会父元素 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="今天在写页面布局的时候遇到一个问题，当给一个嵌套在另一个div的子元素设置margin时，只有水平方向上起作用，而在垂直方向上无效，用谷歌调试发现子元素的外边界跑到了父元素的外面，如图  &amp;lt;!DOCTYPE html&amp;gt;    &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;    &amp;lt;head&amp;gt;        &amp;lt;meta charset=&amp;quot;UT">
+<meta name="keywords" content="前端,CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS盒模型之父元素margin-top为什么会影响会父元素 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/01/10/CSS盒模型之父元素margin-top为什么会影响会父元素/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="今天在写页面布局的时候遇到一个问题，当给一个嵌套在另一个div的子元素设置margin时，只有水平方向上起作用，而在垂直方向上无效，用谷歌调试发现子元素的外边界跑到了父元素的外面，如图  &amp;lt;!DOCTYPE html&amp;gt;    &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;    &amp;lt;head&amp;gt;        &amp;lt;meta charset=&amp;quot;UT">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2016/11/06/23/16/breakfast-1804436__340.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0060lm7Tly1fnbs1iqev0j30e10e7jr8.jpg">
+<meta property="og:updated_time" content="2018-01-28T12:12:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS盒模型之父元素margin-top为什么会影响会父元素 | Hexo">
+<meta name="twitter:description" content="今天在写页面布局的时候遇到一个问题，当给一个嵌套在另一个div的子元素设置margin时，只有水平方向上起作用，而在垂直方向上无效，用谷歌调试发现子元素的外边界跑到了父元素的外面，如图  &amp;lt;!DOCTYPE html&amp;gt;    &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;    &amp;lt;head&amp;gt;        &amp;lt;meta charset=&amp;quot;UT">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2016/11/06/23/16/breakfast-1804436__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">CSS盒模型之父元素margin-top为什么会影响会父元素</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-10" class="post-meta__date date">2018-01-10</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/前端/">前端</a>, <a class="categories-link" href="/categories/前端/CSS/">CSS</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/CSS/">CSS</a>, <a class="tags-link" href="/tags/前端/">前端</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2016/11/06/23/16/breakfast-1804436__340.jpg" alt="此处输入图片的描述"><br>今天在写页面布局的时候遇到一个问题，当给一个嵌套在另一个div的子元素设置margin时，只有水平方向上起作用，而在垂直方向上无效，用谷歌调试发现子元素的外边界跑到了父元素的外面，如图<img src="http://ww1.sinaimg.cn/large/0060lm7Tly1fnbs1iqev0j30e10e7jr8.jpg" alt="此处输入图片的描述"></p>
+<blockquote>
+<pre><code>&lt;!DOCTYPE html&gt;
+   &lt;html lang=&quot;en&quot;&gt;
+   &lt;head&gt;
+       &lt;meta charset=&quot;UTF-8&quot;&gt;
+       &lt;title&gt;盒子模型&lt;/title&gt;
+       &lt;style type=&quot;text/css&quot;&gt;
+           .box
+           {
+               width:200px;
+               height:200px;
+               background-color: red;
+               margin-left: 400px;
+               margin-top:250px;
+            }
+           .sunBox{
+               background-color: #548DFF;
+               width:100px;
+               height:100px;
+               margin:50px;
+           }
+
+
+       &lt;/style&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+   &lt;div class=&quot;box&quot;&gt;
+       &lt;div class=&quot;sunBox&quot;&gt;&lt;/div&gt;
+   &lt;/div&gt;
+   &lt;/body&gt;
+   &lt;/html&gt;      </code></pre></blockquote>
+<p>&nbsp;&nbsp;&nbsp;谷歌了好久找到了出现这种现象的原因，来自于CSS2.1的规范，以下是原文</p>
+<blockquote>
+<pre><code>in this specification, the expression collapsing margins means that adjoining margins &gt;(no &gt;non-empty content, padding or border areas or clearance separate them) of two or more boxes &gt;(which may be next to one another or nested) combine to form a single &gt;margin.所有毗邻的两个或更多盒元素的margin将会合并为一个margin共享之。毗邻的定义为：同级或者嵌套的盒元素，并且它们之间没有非空内容、 Padding或Border分隔。</code></pre></blockquote>
+<p>&nbsp;&nbsp;&nbsp;也就是说，当两个元素嵌套时，如果中间没有任何非空内容或者padding或border属性，则会将二者的垂直方向上的margin合并显示，这也叫做垂直外边距合并。<br>&nbsp;&nbsp;&nbsp;解决方法有以下几种：</p>
+<ul>
+<li>修改父元素的高度，增加padding-top样式模拟（padding-top：1px；常用） </li>
+<li>为父元素添加overflow：hidden；样式即可（完美） </li>
+<li>为父元素或者子元素声明浮动（float：left；可用） </li>
+<li>为父元素添加border（border:1px solid transparent可用） </li>
+<li>为父元素或者子元素声明绝对定位 </li>
+</ul>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      ajax原理 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="ajax原理图大佬绘制的ajax原理图  为什么需要ajax&amp;nbsp;&amp;nbsp;传统的web网站，在提交完表单之后，浏览器需要重新加载整个页面，如果服务器长时间没能响应，客户端无法响应，那么用户体验将会非常差，当服务器端响应之后，浏览器需要加载整个页面，这样的话客户端的负担也会非常大，同时加载整个页面，需要接受大量数据女，影响网络的性能。 什么是ajax&amp;nbsp;&amp;nbsp;从本质上来说a">
+<meta name="keywords" content="前端,ajax">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax原理 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/02/08/ajax原理/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ajax原理图大佬绘制的ajax原理图  为什么需要ajax&amp;nbsp;&amp;nbsp;传统的web网站，在提交完表单之后，浏览器需要重新加载整个页面，如果服务器长时间没能响应，客户端无法响应，那么用户体验将会非常差，当服务器端响应之后，浏览器需要加载整个页面，这样的话客户端的负担也会非常大，同时加载整个页面，需要接受大量数据女，影响网络的性能。 什么是ajax&amp;nbsp;&amp;nbsp;从本质上来说a">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2018/02/02/22/28/nature-3126513__340.jpg">
+<meta property="og:updated_time" content="2018-03-17T04:12:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ajax原理 | Hexo">
+<meta name="twitter:description" content="ajax原理图大佬绘制的ajax原理图  为什么需要ajax&amp;nbsp;&amp;nbsp;传统的web网站，在提交完表单之后，浏览器需要重新加载整个页面，如果服务器长时间没能响应，客户端无法响应，那么用户体验将会非常差，当服务器端响应之后，浏览器需要加载整个页面，这样的话客户端的负担也会非常大，同时加载整个页面，需要接受大量数据女，影响网络的性能。 什么是ajax&amp;nbsp;&amp;nbsp;从本质上来说a">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2018/02/02/22/28/nature-3126513__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">ajax原理</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-02-08" class="post-meta__date date">2018-02-08</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/前端/">前端</a>, <a class="categories-link" href="/categories/前端/ajax/">ajax</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/ajax/">ajax</a>, <a class="tags-link" href="/tags/前端/">前端</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2018/02/02/22/28/nature-3126513__340.jpg" alt="此处输入图片的描述"></p>
+<h3 id="ajax原理图"><a href="#ajax原理图" class="headerlink" title="ajax原理图"></a>ajax原理图</h3><p><a href="http://images.cnblogs.com/cnblogs_com/jackson0714/779808/o_12_AJAX_Process_02_WaterMark.jpg" target="_blank" rel="noopener">大佬绘制的ajax原理图</a> </p>
+<h3 id="为什么需要ajax"><a href="#为什么需要ajax" class="headerlink" title="为什么需要ajax"></a>为什么需要ajax</h3><p>&nbsp;&nbsp;传统的web网站，在提交完表单之后，浏览器需要重新加载整个页面，如果服务器长时间没能响应，客户端无法响应，那么用户体验将会非常差，当服务器端响应之后，浏览器需要加载整个页面，这样的话客户端的负担也会非常大，同时加载整个页面，需要接受大量数据女，影响网络的性能。</p>
+<h3 id="什么是ajax"><a href="#什么是ajax" class="headerlink" title="什么是ajax"></a>什么是ajax</h3><p>&nbsp;&nbsp;从本质上来说ajax=异步JavaScript+XML，是一种用于创建快速创建动态网页的技术，通过与后台进行少量的数据交换，实现网页的异步更新，可以在不加载整个网页的情况下,对于网页的某部分进行更新 </p>
+<h3 id="原生js实现ajax"><a href="#原生js实现ajax" class="headerlink" title="原生js实现ajax"></a>原生js实现ajax</h3><blockquote>
+<pre><code>var xmlhttp=null; //声明一个变量，用来初始化XMLHttpRequest对象
+if(window.XMLHttpRequest) {
+    xmlhttp=new XMLHttpRequest();  //新版本的浏览器可以直接创建XMLHTTPRequest
+}
+else if(window.ActiveXObject){
+    xmlhttp=new ActiveXObject(&quot;Microsoft XMLHTTP&quot;);
+}
+if(Xmlhttp!=null){
+    xmlhttp.onreadystatechange=state_change;    //指定响应函数为state_change
+    xmlhttp.open(&quot;GET&quot;,&quot;/example/xdom/note.xml&quot;,true);
+//指定请求，这里要访问在/example/xdom/note.xml，true代表使用的是异步请求
+    xmlhttp.send(null);
+}
+else{
+    alert(&quot;Your browser doesn&apos;t support XMlHttP&quot;);
+}
+
+//创建响应函数state_change
+function state_change(){
+    if(xmlhttp.readyState==4){
+        if(xmlhttp.status==200){
+            //这里是响应函数的具体逻辑
+        }
+        else{
+            alert(&quot;Problem retrieving XML data&quot;);
+        }
+    }</code></pre><p>}</p>
+</blockquote>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://www.w3school.com.cn/xml/xml_http.asp" target="_blank" rel="noopener">w3c XMLHttpRequest对象</a><br><a href="http://www.cnblogs.com/jackson0714/p/AJAX.html" target="_blank" rel="noopener">30分钟全面解析-图解AJAX原理</a></p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

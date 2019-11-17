@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      公钥基础结构PKI | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="PKI的组件证书注册机构（RA）   RA是面向用户的窗口，它负责接受用户的证书申请，审核用户身份，RA也负责向用户颁发证书。注册功能有时可以通过CA直接实现，有时将这部分功能分离成RA来实现  证书颁发机构（CA）   CA是PKI的核心，CA通过签发证书将一个主体与其公钥进行捆绑公证,CA的两个属性：CA的名字和公钥。CA执行的基本的PKI功能：  签发证书（例如：创建和签名）；  发布它的当">
+<meta name="keywords" content="操作系统安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="公钥基础结构PKI | Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/12/07/公钥基础结构PKI/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="PKI的组件证书注册机构（RA）   RA是面向用户的窗口，它负责接受用户的证书申请，审核用户身份，RA也负责向用户颁发证书。注册功能有时可以通过CA直接实现，有时将这部分功能分离成RA来实现  证书颁发机构（CA）   CA是PKI的核心，CA通过签发证书将一个主体与其公钥进行捆绑公证,CA的两个属性：CA的名字和公钥。CA执行的基本的PKI功能：  签发证书（例如：创建和签名）；  发布它的当">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/0060lm7Tly1fm8hy5gikgj30qb0hgjx8.jpg">
+<meta property="og:updated_time" content="2018-01-27T05:41:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="公钥基础结构PKI | Hexo">
+<meta name="twitter:description" content="PKI的组件证书注册机构（RA）   RA是面向用户的窗口，它负责接受用户的证书申请，审核用户身份，RA也负责向用户颁发证书。注册功能有时可以通过CA直接实现，有时将这部分功能分离成RA来实现  证书颁发机构（CA）   CA是PKI的核心，CA通过签发证书将一个主体与其公钥进行捆绑公证,CA的两个属性：CA的名字和公钥。CA执行的基本的PKI功能：  签发证书（例如：创建和签名）；  发布它的当">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/0060lm7Tly1fm8hy5gikgj30qb0hgjx8.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">公钥基础结构PKI</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-12-07" class="post-meta__date date">2017-12-07</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/课程笔记/">课程笔记</a>, <a class="categories-link" href="/categories/课程笔记/操作系统安全/">操作系统安全</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/操作系统安全/">操作系统安全</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="PKI的组件"><a href="#PKI的组件" class="headerlink" title="PKI的组件"></a>PKI的组件</h3><h4 id="证书注册机构（RA）"><a href="#证书注册机构（RA）" class="headerlink" title="证书注册机构（RA）"></a>证书注册机构（RA）</h4><blockquote>
+<p>  RA是面向用户的窗口，它负责接受用户的证书申请，审核用户身份，RA也负责向用户颁发证书。注册功能有时可以通过CA直接实现，有时将这部分功能分离成RA来实现</p>
+</blockquote>
+<h4 id="证书颁发机构（CA）"><a href="#证书颁发机构（CA）" class="headerlink" title="证书颁发机构（CA）"></a>证书颁发机构（CA）</h4><blockquote>
+<p>  CA是PKI的核心，CA通过签发证书将一个主体与其公钥进行捆绑公证,CA的两个属性：CA的名字和公钥。<br>CA执行的基本的PKI功能：<br>  签发证书（例如：创建和签名）；<br>  发布它的当前（例如：期限未满）证书和CRL，因此用户还可以获得他们需要实现安全服务的信息；<br>  维持有关到期证书的状态信息档案</p>
+</blockquote>
+<h4 id="证书库"><a href="#证书库" class="headerlink" title="证书库"></a>证书库</h4><blockquote>
+<p>  证书库是证书获得集中存放地，用户可以从此获得其他用户的证书，可采用X.500，数据库等构造证书库</p>
+</blockquote>
+<h4 id="档案库"><a href="#档案库" class="headerlink" title="档案库"></a>档案库</h4><blockquote>
+<p>  档案库是一个被用来解决将来争执的信息库，为CA承担长期存储文档信息的责任。档案的主要是储存和保护充足的信息来决定在一份旧的文档中数字签名是可信的</p>
+</blockquote>
+<h4 id="密钥备份及恢复系统"><a href="#密钥备份及恢复系统" class="headerlink" title="密钥备份及恢复系统"></a>密钥备份及恢复系统</h4><blockquote>
+<p>  如果用户的解密密钥丢失，则密文无法解密，造成数据丢失<br>     密钥的备份与恢复只能针对解密私钥,签名私钥不能备份，密钥的备份和恢复应由可信机构来完成。</p>
+</blockquote>
+<h4 id="证书废除处理系统"><a href="#证书废除处理系统" class="headerlink" title="证书废除处理系统"></a>证书废除处理系统</h4><blockquote>
+<p>  证书在有效期之内由于某些原因可能需要废除<br>    废除证书是将证书列入证书黑名单（CRL）来完成。<br>    CRL一般存放在目录系统中。</p>
+</blockquote>
+<h3 id="PKI应用系统接口"><a href="#PKI应用系统接口" class="headerlink" title="PKI应用系统接口"></a>PKI应用系统接口</h3><blockquote>
+<p>   PKI的价值在于使用户能够方便的使用加密，数字签名的安全服务<br>   一个完整的PKI必须提供良好的应用接口，使各种应用能够与PKI交互，确保所建立起来的网络环境的可信性</p>
+</blockquote>
+<h3 id="证书的验证"><a href="#证书的验证" class="headerlink" title="证书的验证"></a>证书的验证</h3><blockquote>
+<pre><code>验证真实性，基于证书链验证机制</code></pre><p><img src="http://ww2.sinaimg.cn/large/0060lm7Tly1fm8hy5gikgj30qb0hgjx8.jpg" alt="
+"></p>
+</blockquote>
+<blockquote>
+<p>   验证有效性，通过比较当前时间与证书截止时间<br>   验证可用性，通过证书吊销机制来实现。</p>
+</blockquote>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

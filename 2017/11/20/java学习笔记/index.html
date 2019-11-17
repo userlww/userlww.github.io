@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      java学习笔记（一） | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;撸主大三计算机学生，平日里主要搞前端，因为马上java考试，因此前来总结一下java中的基础知识，当做复习了吧一.数值型变量和常量 数值型变量 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java中的数值型变量和C++类似，主要有整型和浮点型两类，整型又可以分为byte,short,int,long四种，不同类型的差别主要是所需内存空">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java学习笔记（一） | Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/11/20/java学习笔记/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;撸主大三计算机学生，平日里主要搞前端，因为马上java考试，因此前来总结一下java中的基础知识，当做复习了吧一.数值型变量和常量 数值型变量 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java中的数值型变量和C++类似，主要有整型和浮点型两类，整型又可以分为byte,short,int,long四种，不同类型的差别主要是所需内存空">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-01-27T05:36:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java学习笔记（一） | Hexo">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;撸主大三计算机学生，平日里主要搞前端，因为马上java考试，因此前来总结一下java中的基础知识，当做复习了吧一.数值型变量和常量 数值型变量 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java中的数值型变量和C++类似，主要有整型和浮点型两类，整型又可以分为byte,short,int,long四种，不同类型的差别主要是所需内存空">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">java学习笔记（一）</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-11-20" class="post-meta__date date">2017-11-20</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/java/">java</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/java/">java</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;撸主大三计算机学生，平日里主要搞前端，因为马上java考试，因此前来总结一下java中的基础知识，当做复习了吧一.数值型变量和常量</p>
+<h3 id="数值型变量"><a href="#数值型变量" class="headerlink" title="数值型变量"></a>数值型变量</h3><blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java中的数值型变量和C++类似，主要有整型和浮点型两类，整型又可以分为byte,short,int,long四种，不同类型的差别主要是所需内存空间大小不同，同时所能表示的数据范围也不同，byte数据类型需要一个字节（即8个bit），存储范围从-128<del>127，int需要四个字节，表示范围-2147483648</del>2147483647.long类型和short类型各自需要8个字节和2个字节，表示范围可以自行计算。int类型提供的数据范围已经足够大，大多数情况下用int就已经足够。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浮点型数据分为float和double,一个float类型的变量占用4个字节，double类型需要8个字节，在许多程序中，用float就足够。</p>
+</blockquote>
+<h3 id="数值型常量"><a href="#数值型常量" class="headerlink" title="数值型常量"></a>数值型常量</h3><blockquote>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java中常量同样分为整型和浮点型两类，整型常量有十进制，八进制，十六进制三种表示形式,八进制以0开头，如0x10表示10进制的16，-0x15表示10进制的-13。十六进制以数字0加x或者X开头，如0x10表示10进制的16,-0X15表示十进制的-21.浮点型常量有两种表示方法，一种是十进制表示法，例如-3.5分，0.0f,123.45f等；还有一种是科学计数法例如：3.25E+8（=6.25<em>10^</em>8,双精度）</p>
+</blockquote>
+<h3 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java的字符使用Unicode编码，使用两个字节，支持世界上所有的语言，ASCII码是Unicode的一个子集，Unicode表示ASCII码时，高位为0，它是其前255个字符。Unicode通常使用十六进制“\u0000”-“\u00ff”表示ASCII码集。”\u”表示转义字符，它用来表示其后四个十六进制数字是Unicode代码。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;变量：  char ch=”A”;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常量：即用单引号括起来的一个ASCII码字符集中的一个字符，如：‘A’，‘a’；空格也是一个字符</p>
+<h3 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h3><p>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;布尔型和C++一样，只能取true和false两个值。但是和C++不同的是。java中不可将整型转换为布尔型。  </p>
+<h3 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h3><p>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;变量作用域是指什么范围内的程序可以访问该变量,变量作用域可以分为：类成员变量，方法参数，局部变量。异常处理变量</p>
+<h3 id="部分运算符以及运算符的优先级"><a href="#部分运算符以及运算符的优先级" class="headerlink" title="部分运算符以及运算符的优先级"></a>部分运算符以及运算符的优先级</h3><h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符:"></a>位运算符:</h4><blockquote>
+<pre><code>~（按位取反）     &amp;（按位与）      </code></pre></blockquote>
+<blockquote>
+<pre><code>|（按位或）  ^(按位异或)</code></pre></blockquote>
+<h4 id="移位运算符："><a href="#移位运算符：" class="headerlink" title="移位运算符："></a>移位运算符：</h4><blockquote>
+<pre><code>&gt;&gt;有符号二进制右移一定位
+&lt;&lt;有符号二进制左移一定位
+&gt;&gt;&gt;无符号二进制右移一定位</code></pre></blockquote>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

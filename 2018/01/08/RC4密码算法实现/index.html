@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      RC4密码算法实现 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="写在前面&amp;nbsp;&amp;nbsp;&amp;nbsp;密码学实验已经做了好几个星期了，始终没能跟上老师的脚步，一来最近在复习基础只是准备下学期找实习，二来也在学习一些新的技术，而且越来越懒，所以没有花太多时间在密码学上面，这篇文章用来整理一下RC4密码的实现思路，也是为了帮助自己更好的理解。 参考RC4加密算法的原理及实现维基百科-RC4 概述&amp;nbsp;&amp;nbsp;&amp;nbsp;RC4算法是一种比较典型的序">
+<meta name="keywords" content="密码学,序列密码,RC4">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RC4密码算法实现 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/01/08/RC4密码算法实现/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="写在前面&amp;nbsp;&amp;nbsp;&amp;nbsp;密码学实验已经做了好几个星期了，始终没能跟上老师的脚步，一来最近在复习基础只是准备下学期找实习，二来也在学习一些新的技术，而且越来越懒，所以没有花太多时间在密码学上面，这篇文章用来整理一下RC4密码的实现思路，也是为了帮助自己更好的理解。 参考RC4加密算法的原理及实现维基百科-RC4 概述&amp;nbsp;&amp;nbsp;&amp;nbsp;RC4算法是一种比较典型的序">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2018/01/21/19/57/tree-3097419__340.jpg">
+<meta property="og:updated_time" content="2018-01-28T12:19:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RC4密码算法实现 | Hexo">
+<meta name="twitter:description" content="写在前面&amp;nbsp;&amp;nbsp;&amp;nbsp;密码学实验已经做了好几个星期了，始终没能跟上老师的脚步，一来最近在复习基础只是准备下学期找实习，二来也在学习一些新的技术，而且越来越懒，所以没有花太多时间在密码学上面，这篇文章用来整理一下RC4密码的实现思路，也是为了帮助自己更好的理解。 参考RC4加密算法的原理及实现维基百科-RC4 概述&amp;nbsp;&amp;nbsp;&amp;nbsp;RC4算法是一种比较典型的序">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2018/01/21/19/57/tree-3097419__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">RC4密码算法实现</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-08" class="post-meta__date date">2018-01-08</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/密码学/">密码学</a>, <a class="categories-link" href="/categories/密码学/序列密码/">序列密码</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/RC4/">RC4</a>, <a class="tags-link" href="/tags/密码学/">密码学</a>, <a class="tags-link" href="/tags/序列密码/">序列密码</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>&nbsp;&nbsp;&nbsp;密码学实验已经做了好几个星期了，始终没能跟上老师的脚步，一来最近在复习基础只是准备下学期找实习，二来也在学习一些新的技术，而且越来越懒，所以没有花太多时间在密码学上面，这篇文章用来整理一下RC4密码的实现思路，也是为了帮助自己更好的理解。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://blog.csdn.net/lc_910927/article/details/37599161" target="_blank" rel="noopener">RC4加密算法的原理及实现</a><br><a href="https://zh.wikipedia.org/wiki/RC4" target="_blank" rel="noopener">维基百科-RC4</a></p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><img src="https://cdn.pixabay.com/photo/2018/01/21/19/57/tree-3097419__340.jpg" alt="此处输入图片的描述"><br>&nbsp;&nbsp;&nbsp;RC4算法是一种比较典型的序列密码，序列密码最早的起源可以追溯到1917年的Vernam算法，简单来说，序列密码是指明文消息按字符（比如二元字符）逐一字符进行加密的密码算法，序列密码可以分为同步序列密码和自同步序列密码。</p>
+<h3 id="算法中的几个重要变量"><a href="#算法中的几个重要变量" class="headerlink" title="算法中的几个重要变量"></a>算法中的几个重要变量</h3><ul>
+<li>密钥流：密钥流是RC4的关键，是由明文和密钥生成的，密钥流的长度和明文的长度是对应的，同时加密得到的密文和密钥流的长度也是相同的。</li>
+<li>状态向量S:状态向量的长度为2的8次方也就是256，存放在数组S中，称为S盒。</li>
+<li>临时向量T:长度也是256，如果密钥长度也是256个字节，就直接将密钥的值赋给T，否则轮转的将密钥的每个字节赋给T；</li>
+<li>密钥K：长度为1-256字节，注意密钥的长度与名文森和密钥流的长度没有必然的关系，通常密钥的长度为16字节（128比特）。<h3 id="RC4的实现步骤"><a href="#RC4的实现步骤" class="headerlink" title="RC4的实现步骤"></a>RC4的实现步骤</h3><h4 id="初始化S和T"><a href="#初始化S和T" class="headerlink" title="初始化S和T"></a>初始化S和T</h4></li>
+</ul>
+<blockquote>
+<p>S[0]-s[255]的值就是其对应的下标的值,轮转的将密钥的值赋给T；</p>
+</blockquote>
+<blockquote>
+<pre><code>for(int i=0;i&lt;256;i++)
+  {
+     s[i]=i;
+     T[i]=K[imodKlen];
+   }</code></pre></blockquote>
+<h4 id="初始排列S"><a href="#初始排列S" class="headerlink" title="初始排列S"></a>初始排列S</h4><blockquote>
+<pre><code>int j=0;
+for(int i=0;i&lt;256;i++)
+ {
+  j=(j+S[i]+T[i])mod256;
+  swao(S[i],S[j]);</code></pre></blockquote>
+<h4 id="产生密钥流"><a href="#产生密钥流" class="headerlink" title="产生密钥流"></a>产生密钥流</h4><blockquote>
+<pre><code>int i=0,j=0;
+for(int r=0;r&lt;Mlen;r++)    //Mlen为明文长度
+ {
+   i=(i+1)mod256;
+   j=(j+S[i]mod256;
+   swap(S[i],S[i])mod256;
+    t=(S[i]+S[j])mod256;
+    k[r]=S[t];</code></pre></blockquote>
+<p>下面是实现RC4的C++代码<br>//RC4算法对数据的加密和解密  </p>
+<blockquote>
+<pre><code>#include &lt;stdio.h&gt;  
+  #include &lt;stdlib.h&gt;  
+  #include &lt;string.h&gt;  
+  #include &lt;conio.h&gt;  
+  #include &lt;iostream&gt;  
+
+  using namespace std;  
+
+  /*函数声明*/  
+  void InitSbox(unsigned char sbox[]);                            //初始化S盒  
+  void KeyExpansion(unsigned char key[], char *k, int len);      //密钥扩展 
+  void UpsetSbox(unsigned char sbox[], unsigned char key[]);     //打乱S盒 
+  void DataProcess(unsigned char sbox[], FILE *fp1, FILE *fp2);  
+  void DataEncrypt(char *k, unsigned char *key, unsigned char *sbox, FILE *fp1, FILE *fp2);  
+  void DataDecrypt(char *k1, unsigned char *key, unsigned char *sbox, FILE *fp1, FILE *fp2);  
+
+  /*初始化S盒*/  
+  void InitSbox(unsigned char sbox[]){  
+      for(int i = 0; i &lt; 256; i++)  sbox[i] = i;  
+  }  
+
+  /*密钥填充256数组*/  
+  void KeyExpansion(unsigned char key[], char *k, int len){  
+      if(len &lt;= 256){  
+          for(int i = 0; i &lt; 256; i++) key[i] = k[i % len];  
+      }  
+      if(len &gt; 256){  
+          for(int i = 0; i &lt; 256; i++) key[i] = k[i];  
+      }  
+  }  
+
+  /*打乱S盒*/   
+  void UpsetSbox(unsigned char sbox[], unsigned char key[]){  
+      int j = 0;  
+      unsigned char temp;  
+      int n;  
+      for(int i = 0; i &lt; 256; i++){  
+          n = j + (int)sbox[i] + (int)key[i];  
+          j = n % 256;  
+          temp = sbox[i];  
+          sbox[i] = sbox[j];  
+          sbox[j] = temp;  
+      }  
+  }  
+
+  /*加解密数据*/   
+  void DataProcess(unsigned char sbox[], FILE *fp1, FILE *fp2){  
+      int i, j;  
+      i = 0; j = 0;  
+      char ch = fgetc(fp1);  
+      while(ch != EOF){  
+          i = (i + 1) % 256;  
+          int temp2 = j + (int)sbox[i];  
+          j = temp2 % 256;  
+          unsigned char temp;  
+          temp = sbox[i];  
+          sbox[i] = sbox[j];  
+          sbox[j] = temp;  
+          int temp1 = (int)sbox[i] + (int)sbox[j];  
+          int t = temp1 % 256;  
+          char k = sbox[t];  
+          char cipherchar = ch ^ k;  
+          fputc(cipherchar, fp2);  
+          ch = fgetc(fp1);  
+      }  
+  }  
+
+  /*加密总函数*/  
+  void DataEncrypt(char *k, unsigned char *key, unsigned char *sbox, FILE *fp1, FILE *fp2) {  
+      int len = strlen(k);  
+      KeyExpansion(key, k, len);  
+      InitSbox(sbox);  
+      UpsetSbox(sbox, key);  
+      DataProcess(sbox, fp1, fp2);  
+      fclose(fp1);  
+      fclose(fp2);  
+      printf(&quot;\n加密成功!\n\n&quot;);  
+  }  
+
+  /*解密总函数*/   
+  void DataDecrypt(char *k1, unsigned char *key, unsigned char *sbox, FILE *fp1, FILE *fp2) {  &gt;      
+      int len = strlen(k1);  
+      KeyExpansion(key, k1, len);  
+      InitSbox(sbox);  
+      UpsetSbox(sbox, key);  
+      DataProcess(sbox, fp1, fp2);  
+      fclose(fp1);  
+      fclose(fp2);  
+      printf(&quot;\n解密成功!\n\n&quot;);  
+  }  
+
+  main(){  
+      char *k = (char *)malloc(25 * sizeof(char));  
+      char *k1 = (char *)malloc(25 * sizeof(char));  
+      unsigned char key[256] = {0x00};  
+      unsigned char sbox[256] = {0x00};  
+      FILE *fp1, *fp2;  
+      int flag = 1;  
+      int choice;  
+      do{  
+          printf(&quot;*****************************RC4加密解密文件********************************    &gt;           ****&quot;     );  
+          printf(&quot;\n&quot;);   
+          printf(&quot;                             1.加密文件\n\n&quot;);  
+          printf(&quot;                             2.解密文件\n\n&quot;);  
+          printf(&quot;                             3.退出\n\n&quot;);   
+          printf(&quot;请选择要进行的操作:&quot;);  
+          scanf(&quot;%d&quot;,&amp;choice);  
+          switch(choice){  
+              case 1: fp1 = fopen(&quot;源文件.txt&quot;,&quot;r&quot;);  
+                      if(fp1 == NULL){  
+                          printf(&quot;打开源文件失败!\n&quot;);  
+                          getchar();  
+                          exit(0);  
+                      }  
+                      fp2 = fopen(&quot;加密后文件.txt&quot;,&quot;w&quot;);  
+                      if(fp2 == NULL){  
+                          printf(&quot;打开加密后文件失败!\n&quot;);  
+                          getchar();  
+                          exit(0);  
+                      }  
+                      printf(&quot;\n请输入加密密钥:&quot;);  
+                      cin &gt;&gt; k;  
+                      DataEncrypt(k, key, sbox, fp1, fp2);  
+                      break;  
+              case 2: fp1 = fopen(&quot;加密后文件.txt&quot;,&quot;r&quot;);  
+                      if(fp1 == NULL){  
+                          printf(&quot;打开加密后文件失败!\n&quot;);  
+                          getchar();  
+                          exit(0);  
+                      }  
+                      fp2 = fopen(&quot;解密后文件.txt&quot;,&quot;w&quot;);  
+                      if(fp2 == NULL){  
+                          printf(&quot;打开解密后文件失败!\n&quot;);  
+                          getchar();  
+                          exit(0);  
+                      }  
+                      printf(&quot;\n请输入解密密钥:&quot;);  
+                      cin &gt;&gt; k1;  
+                      DataDecrypt(k1, key, sbox, fp1, fp2);  
+                      break;  
+              case 3: flag = 0;break;  
+              default : printf(&quot;\n操作不合法!\n\n&quot;);  
+          }  
+      }while(flag);  
+  }  </code></pre></blockquote>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      合并排序 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;合并排序是比较典型的采用了分治思想的算法，执行的过程分为划分子区间和合并子区间，合并排序的核心思想在于将两个有序的子区间合并为一个一个有序的区间，即将待排序的序列划分成两个子区间，然后递归调用自身，当划分至每一个子区间只有一个元素时进行合并。最终得到一个排列好的序列。代码如下：   #include&amp;lt;iostream&amp;g">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="合并排序 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/11/26/合并排序/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;合并排序是比较典型的采用了分治思想的算法，执行的过程分为划分子区间和合并子区间，合并排序的核心思想在于将两个有序的子区间合并为一个一个有序的区间，即将待排序的序列划分成两个子区间，然后递归调用自身，当划分至每一个子区间只有一个元素时进行合并。最终得到一个排列好的序列。代码如下：   #include&amp;lt;iostream&amp;g">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-01-27T05:44:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="合并排序 | Hexo">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;合并排序是比较典型的采用了分治思想的算法，执行的过程分为划分子区间和合并子区间，合并排序的核心思想在于将两个有序的子区间合并为一个一个有序的区间，即将待排序的序列划分成两个子区间，然后递归调用自身，当划分至每一个子区间只有一个元素时进行合并。最终得到一个排列好的序列。代码如下：   #include&amp;lt;iostream&amp;g">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">合并排序</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-11-26" class="post-meta__date date">2017-11-26</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/算法/">算法</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/算法/">算法</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合并排序是比较典型的采用了分治思想的算法，执行的过程分为划分子区间和合并子区间，合并排序的核心思想在于将两个有序的子区间合并为一个一个有序的区间，即将待排序的序列划分成两个子区间，然后递归调用自身，当划分至每一个子区间只有一个元素时进行合并。最终得到一个排列好的序列。代码如下：</p>
+<blockquote>
+<pre><code> #include&lt;iostream&gt;
+ using namespace std;
+ void merge(int *data, int start, int end, int *result)
+ {
+ int left_length = (end - start + 1) / 2 + 1;//左部分区间的数据元素的个数
+ int left_index = start;
+ int right_index = start + left_length;
+ int result_index = start;
+ while (left_index &lt; start + left_length &amp;&amp; right_index &lt; end + 1)
+ {
+    //对分别已经排好序的左区间和右区间进行合并
+    if (data[left_index] &lt;= data[right_index])
+        result[result_index++] = data[left_index++];
+    else
+        result[result_index++] = data[right_index++];
+}
+    while (left_index &lt; start + left_length)    
+    result[result_index++] = data[left_index++];
+    while (right_index &lt; end + 1)
+    result[result_index++] = data[right_index++];
+ }   
+    void merge_sort(int *data, int start, int end, int *result)  
+   {  
+    if (1 == end - start)//如果区间中只有两个元素，则对这两个元素进行排序
+ {
+    if (data[start] &gt; data[end])
+    {
+        int temp = data[start];
+        data[start] = data[end];
+        data[end] = temp;
+    }
+    return;
+}
+    else if (0 == end - start)//如果只有一个元素，则不用排序
+    return;
+   else
+    {
+       //继续划分子区间，分别对左右子区间进行排序
+       merge_sort(data, start, (end - start + 1) / 2 + start, result);
+       merge_sort(data, (end - start + 1) / 2 + start + 1, end, result);
+       //开始归并已经排好序的start到end之间的数据
+      merge(data, start, end, result);
+      //把排序后的区间数据复制到原始数据中去
+       for (int i = start; i &lt;= end; ++i)
+        data[i] = result[i];
+    }
+ }  
+ int main()
+{  
+    int data[] = { 9,6,7,22,20,33,16,20 };
+    const int length = 8;
+    int result[length];
+    cout &lt;&lt; &quot;Before sorted:&quot; &lt;&lt; endl;
+    for (int i = 0; i &lt; length; ++i)
+    cout &lt;&lt; data[i] &lt;&lt; &quot;  &quot;;
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;After sorted:&quot; &lt;&lt; endl;
+    merge_sort(data, 0, length - 1, result);
+    for (int i = 0; i &lt; length; ++i)
+    cout &lt;&lt; data[i] &lt;&lt; &quot;  &quot;;
+    cout &lt;&lt; endl;
+    return 0;
+ }</code></pre></blockquote>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

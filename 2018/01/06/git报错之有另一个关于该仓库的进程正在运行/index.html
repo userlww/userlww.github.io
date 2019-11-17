@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      git报错之有另一个关于该仓库的进程正在运行 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="今天写完博客提交的时候进程没结束发现有一点问题，就Ctrl+C强制停止，结果第二次提交的时候就报了如下的错误  fatal: Unable to create &amp;apos;E:/hexo/.deploy_git/.git/index.lock&amp;apos;: File exists. Another git process seems to be running in this repository">
+<meta name="keywords" content="git,版本管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git报错之有另一个关于该仓库的进程正在运行 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/01/06/git报错之有另一个关于该仓库的进程正在运行/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="今天写完博客提交的时候进程没结束发现有一点问题，就Ctrl+C强制停止，结果第二次提交的时候就报了如下的错误  fatal: Unable to create &amp;apos;E:/hexo/.deploy_git/.git/index.lock&amp;apos;: File exists. Another git process seems to be running in this repository">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2018/01/22/23/54/rabbit-3100341__340.jpg">
+<meta property="og:updated_time" content="2018-01-28T12:16:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git报错之有另一个关于该仓库的进程正在运行 | Hexo">
+<meta name="twitter:description" content="今天写完博客提交的时候进程没结束发现有一点问题，就Ctrl+C强制停止，结果第二次提交的时候就报了如下的错误  fatal: Unable to create &amp;apos;E:/hexo/.deploy_git/.git/index.lock&amp;apos;: File exists. Another git process seems to be running in this repository">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2018/01/22/23/54/rabbit-3100341__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">git报错之有另一个关于该仓库的进程正在运行</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-06" class="post-meta__date date">2018-01-06</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/工具/">工具</a>, <a class="categories-link" href="/categories/工具/git/">git</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/git/">git</a>, <a class="tags-link" href="/tags/版本管理/">版本管理</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2018/01/22/23/54/rabbit-3100341__340.jpg" alt="此处输入图片的描述"><br>今天写完博客提交的时候进程没结束发现有一点问题，就Ctrl+C强制停止，结果第二次提交的时候就报了如下的错误</p>
+<blockquote>
+<pre><code>fatal: Unable to create &apos;E:/hexo/.deploy_git/.git/index.lock&apos;: File exists.
+Another git process seems to be running in this repository, e.g.
+an editor opened by &apos;git commit&apos;. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.</code></pre></blockquote>
+<p>&nbsp;&nbsp;&nbsp;大概意思是lock.index文件已存在，无法继续，谷歌了一下，这个文件的作用是锁定当前目录，避免有多个进程同时对当前目录进行操作，运行之后自动删除，于是到.git目录下删除index.lock,再次运行，没有错误。下面是原回答，不过有墙。<br><a href="https://stackoverflow.com/questions/38004148/another-git-process-seems-to-be-running-in-this-repository" target="_blank" rel="noopener">Another git process seems to be running in this repository</a></p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

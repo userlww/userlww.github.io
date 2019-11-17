@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      520没有对象怎么办，当然是new一个啦 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="preface　　　这篇主要用来写一下JavaScript创建对象以及实现继承的方式，本来打算520的时候就写的，一直拖到现在才动笔，为自己的拖延忏悔。 工厂模式123456789101112function creatPerson(name,age,job) &amp;#123;   var o = new Object()      o.name = name      o.age = age">
+<meta name="keywords" content="JavaScript,面向对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="520没有对象怎么办，当然是new一个啦 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/05/20/520没有对象怎么办，当然是new一个啦/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="preface　　　这篇主要用来写一下JavaScript创建对象以及实现继承的方式，本来打算520的时候就写的，一直拖到现在才动笔，为自己的拖延忏悔。 工厂模式123456789101112function creatPerson(name,age,job) &amp;#123;   var o = new Object()      o.name = name      o.age = age">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2018/07/08/14/16/cat-3523992__340.jpg">
+<meta property="og:updated_time" content="2018-09-08T15:18:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="520没有对象怎么办，当然是new一个啦 | Hexo">
+<meta name="twitter:description" content="preface　　　这篇主要用来写一下JavaScript创建对象以及实现继承的方式，本来打算520的时候就写的，一直拖到现在才动笔，为自己的拖延忏悔。 工厂模式123456789101112function creatPerson(name,age,job) &amp;#123;   var o = new Object()      o.name = name      o.age = age">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2018/07/08/14/16/cat-3523992__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">520没有对象怎么办，当然是new一个啦</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-05-20" class="post-meta__date date">2018-05-20</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/前端/">前端</a>, <a class="categories-link" href="/categories/前端/JavaScript/">JavaScript</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tags-link" href="/tags/面向对象/">面向对象</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2018/07/08/14/16/cat-3523992__340.jpg" alt="此处输入图片的描述"></p>
+<h3 id="preface"><a href="#preface" class="headerlink" title="preface"></a>preface</h3><p>　　　这篇主要用来写一下JavaScript创建对象以及实现继承的方式，本来打算520的时候就写的，一直拖到现在才动笔，为自己的拖延忏悔。</p>
+<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function creatPerson(name,age,job) &#123;</span><br><span class="line">   var o = new Object()</span><br><span class="line">      o.name = name</span><br><span class="line">      o.age = age</span><br><span class="line">      o.job = job</span><br><span class="line">      o.sayName = function() &#123;</span><br><span class="line">         alert(this.name)</span><br><span class="line">    &#125;</span><br><span class="line">    return o </span><br><span class="line">&#125;</span><br><span class="line">var person1 = creatPerson(&apos;maxwell&apos;,20,&apos;Student&apos;)</span><br><span class="line">var person2 = creatPerson(&apos;sail&apos;,15,&apos;Maxwell&apos;son&apos;)</span><br></pre></td></tr></table></figure>
+
+<p> 　　　工厂模式使用一个函数来接收构造一个对象所需要的参数，该函数可以多次调用，每次都会返回一个包含三个属性和一个方法的对象，使用这种方式可以创建多个相似对象，但却不能解决如何知道一个对象的类型的问题，于是就有了下一种创建JavaScript对象的方式</p>
+<h3 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h3><p>  　使用构造函数模式重写前面创建对象的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   function Person(name ,age,job) &#123;</span><br><span class="line">     this.name = name</span><br><span class="line">     this.age = age</span><br><span class="line">     this.job = job </span><br><span class="line">     this.sayName = function() &#123;</span><br><span class="line">       alert(this.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    var perso1 = new Person(&apos;Maxwell&apos;,22,&apos;coder&apos;)</span><br><span class="line">    var person = new Person (&apos;Jordan&apos;,32,&apos;basketball player&apos;)</span><br></pre></td></tr></table></figure>
+
+<p>　　　使用这种方式创建对象的过程要经过以下几个过程：</p>
+<ul>
+<li><p>创建一个对象</p>
+</li>
+<li><p>将构造函数的作用域赋给新对象，使this指向当前的新对象</p>
+</li>
+<li><p>执行构造函数中的代码（为对象添加属性）</p>
+</li>
+<li><p>返回新的对象</p>
+<p>　　这种方法和之前的工厂模式有几个不同之处</p>
+</li>
+<li><p>没有显示的创建对象</p>
+</li>
+<li><p>直接将属性和方法付给了this对象</p>
+</li>
+<li><p>没有return语句</p>
+</li>
+</ul>
+<p>　　　构造函数模式的缺点，每次创建一个新的对象创建，对象的方法属性也需要重新创建一遍，因此不同实例上的同名函数是不相等的，这种问题可以通过将构造函数定义在构造函数外面来解决，比如上面的Person对象可以通过将sayName方法定义在全局环境来实所有对象实例共享同一个同名函数，但是这样的话又会有新的问题，当一个对象中包含多个函数成员时就需要定义多个全局函数，这样的话作为对象的封装性又无从谈起了，这样的话就有了一种新的创建对象的方式，原型模式</p>
+<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><p>　　　我们每创建一个对象，它都有一个prototype属性，这个属性是一个另一个对象的指针，这个对象包含可以有特定的类型的所有实例共享的属性方法，也就是说，不用在构造函数中定义对象实例的信息，而是可以将这些属性直接添加到原型对象中，如下面的例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> function Persn() &#123;</span><br><span class="line">  Person.prototype.name = &apos;maxwell&apos;</span><br><span class="line">  Person.prototype.age = 22</span><br><span class="line">  Person.prototype.job = &apos;coder&apos;</span><br><span class="line">  Person.prototype.sayName = function() &#123;</span><br><span class="line">     alert(this.name)</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">var person1 = new Person()</span><br><span class="line">var person2 = new Person()</span><br></pre></td></tr></table></figure>
+
+<p>   　　这样的话person1和person2将共享所有的原型属性，他们的访问的成员函数也将是同一个成员函数，这里需要备注一下如果要判断一个属性是某个对象的原型属性还是实例本身的属性，可以先使用in操作符，若返回true说明这个该对象实例一定具有该属性，再使用hasOwnProperty方法判断，若返回true说明该对象在其实例中，返回false则说明属于其原型对象。使用原型模式创建对象的方式会有一个问题就是不是所有属性都是被所有实例共享的，大部分的实例都是要有只属于自己的属性的，因此很少会有单独使用原型模式来创建对象的情况，通常会组合构造函数模式和原型模式来创建既有共有属性也有实例私有属性的对象</p>
+<h3 id="组合使用构造函数模式和原型模式"><a href="#组合使用构造函数模式和原型模式" class="headerlink" title="组合使用构造函数模式和原型模式"></a>组合使用构造函数模式和原型模式</h3><p>　　使用构造函数和原型模式的组合的方式创建对象，构造函数模式用于定义实例属性，原型模式用于定义实例属性，原型模式用于定义方法和共享的属性，每个实例都得会有自己的一份实例属性的副本，但同时又共享对方法的引用，最大限度的节省了内存。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age,job) &#123;</span><br><span class="line">  this.name = name</span><br><span class="line">  this.age = age</span><br><span class="line">  this.job = age</span><br><span class="line">  this.friends = [&apos;maxwell&apos;,&apos;god&apos;]</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">  constructor: Person</span><br><span class="line">  sayName : function() &#123;</span><br><span class="line">  alert(this.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person1 = new Person(&apos;maxwell&apos;,20,&apos;coder&apos;)</span><br><span class="line">var person1 = new Person(&apos;sail&apos;,22,&apos;son&apos;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="动态原型模式"><a href="#动态原型模式" class="headerlink" title="动态原型模式"></a>动态原型模式</h3>
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

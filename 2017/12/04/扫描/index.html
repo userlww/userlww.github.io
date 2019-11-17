@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      扫描 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="扫描的基本步骤 1.确定目标系统是否真实存在 2.确定目标系统上那些服务正在运行或监听 3.探查操作系统 确定目标系统是否真实存在的方法  （传统意义上）ping：向目标发ICMP ECHO(类型8）数据包，如返回ICMP_REPLY数据包（类型0），说明目标系统真实存在&amp;nbsp;&amp;nbsp;&amp;nbsp;（现在的)ping:可利用ICMP，TCP，UDP&amp;nbsp;&amp;nbsp;&amp;nbsp;Q:目">
+<meta name="keywords" content="网络安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="扫描 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/12/04/扫描/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="扫描的基本步骤 1.确定目标系统是否真实存在 2.确定目标系统上那些服务正在运行或监听 3.探查操作系统 确定目标系统是否真实存在的方法  （传统意义上）ping：向目标发ICMP ECHO(类型8）数据包，如返回ICMP_REPLY数据包（类型0），说明目标系统真实存在&amp;nbsp;&amp;nbsp;&amp;nbsp;（现在的)ping:可利用ICMP，TCP，UDP&amp;nbsp;&amp;nbsp;&amp;nbsp;Q:目">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fm3vyorx9kj30iu0asq3x.jpg">
+<meta property="og:updated_time" content="2018-01-27T05:44:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="扫描 | Hexo">
+<meta name="twitter:description" content="扫描的基本步骤 1.确定目标系统是否真实存在 2.确定目标系统上那些服务正在运行或监听 3.探查操作系统 确定目标系统是否真实存在的方法  （传统意义上）ping：向目标发ICMP ECHO(类型8）数据包，如返回ICMP_REPLY数据包（类型0），说明目标系统真实存在&amp;nbsp;&amp;nbsp;&amp;nbsp;（现在的)ping:可利用ICMP，TCP，UDP&amp;nbsp;&amp;nbsp;&amp;nbsp;Q:目">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fm3vyorx9kj30iu0asq3x.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">扫描</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-12-04" class="post-meta__date date">2017-12-04</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/课程笔记/">课程笔记</a>, <a class="categories-link" href="/categories/课程笔记/网络安全/">网络安全</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/网络安全/">网络安全</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h4 id="扫描的基本步骤"><a href="#扫描的基本步骤" class="headerlink" title="扫描的基本步骤"></a>扫描的基本步骤</h4><blockquote>
+<pre><code>1.确定目标系统是否真实存在
+2.确定目标系统上那些服务正在运行或监听
+3.探查操作系统</code></pre></blockquote>
+<h4 id="确定目标系统是否真实存在的方法"><a href="#确定目标系统是否真实存在的方法" class="headerlink" title="确定目标系统是否真实存在的方法"></a>确定目标系统是否真实存在的方法</h4><blockquote>
+<p> （传统意义上）ping：向目标发ICMP ECHO(类型8）数据包，如返回ICMP_REPLY数据包（类型0），说明目标系统真实存在<br>&nbsp;&nbsp;&nbsp;（现在的)ping:可利用ICMP，TCP，UDP<br>&nbsp;&nbsp;&nbsp;Q:目标站点阻断了ICMP数据包怎么办<br>&nbsp;&nbsp;&nbsp;A：使用TCP，UDP进行扫描<br>&nbsp;&nbsp;&nbsp;nmap-PT：对“-PT”选项指定端口进行TCP ping扫描；向目标主机发送TCP ACK数据包并根据返回的RST数据包判断活跃主机<br>Q：为什么选用发送ACK数据包<br>A：绝大多数无状态防火墙产品通常会放行ACK数据包<br>确定目标系统上那些服务正在运行或监听</p>
+</blockquote>
+<p>###端口扫描:<br>&nbsp;&nbsp;&nbsp;&nbsp;主动连接目标系统的TCP和UDP端口以确定那些服务正在运行或处于监听状态</p>
+<h4 id="主要目的："><a href="#主要目的：" class="headerlink" title="主要目的："></a>主要目的：</h4><blockquote>
+<pre><code>确定运行的TCP/UDP服务
+确定操作系统的具体类型
+确定提供服务的应用程序名称和版本</code></pre></blockquote>
+<h4 id="TCP的6个标志位"><a href="#TCP的6个标志位" class="headerlink" title="TCP的6个标志位"></a>TCP的6个标志位</h4><blockquote>
+<pre><code>URG：紧急数据包
+ACK：确认
+PSH：请求急迫操作；接收方应该尽快将数据包交给应用层
+RST：连接复位:重建连接
+SYN：连接请求
+FIN：结束</code></pre></blockquote>
+<h4 id="TCP-IP的一些实现原则"><a href="#TCP-IP的一些实现原则" class="headerlink" title="TCP/IP的一些实现原则"></a>TCP/IP的一些实现原则</h4><blockquote>
+<pre><code>SYN或FIN数据包到达一关闭的端口,丢失数据包同时发送一个RST数据包
+RST数据包到达一监听端口，RST被丢弃
+包含ACK的数据包到达一个监听端口时，数据包被丢弃，同时发送一个RST数据包
+一个不包含SYN位的数据包到达一个监听端口时，数据包被丢弃
+SYN数据包到达一个监听端口时，数据包被丢弃
+FIN数据包到达一个监听端口时，正常的三握手阶段继续，回答一个SYN|ACK数据包
+FIN数据包到达一个监听端口时，数据包被丢弃</code></pre></blockquote>
+<h4 id="扫描类型"><a href="#扫描类型" class="headerlink" title="扫描类型"></a>扫描类型</h4><h5 id="TCP连接扫描（namp-—sT-："><a href="#TCP连接扫描（namp-—sT-：" class="headerlink" title="TCP连接扫描（namp —sT)："></a>TCP连接扫描（namp —sT)：</h5><pre><code>连接目标端口并完成一次完整的三握手过程：很容易被目标系统觉察</code></pre><p><img src="http://ww4.sinaimg.cn/large/0060lm7Tly1fm3vyorx9kj30iu0asq3x.jpg" alt="此处输入图片的描述"></p>
+<h5 id="TCP-SYN扫描（半开扫描-nmap-sS"><a href="#TCP-SYN扫描（半开扫描-nmap-sS" class="headerlink" title="TCP SYN扫描（半开扫描 nmap -sS):"></a>TCP SYN扫描（半开扫描 nmap -sS):</h5><blockquote>
+<p>向目标端口发送SYN数据包</p>
+</blockquote>
+<blockquote>
+<pre><code>返回SYN/ACK数据包，可以断定该端口处于监听状态
+返回RST/ACK数据包，通常表示该端口不在监听状态
+然后扫描者送出一个RST/ACK数据包（使通信双方永远不会建立一条完整连接）</code></pre></blockquote>
+<h5 id="TCP-FIN扫描-秘密扫描-nmap-sF"><a href="#TCP-FIN扫描-秘密扫描-nmap-sF" class="headerlink" title="TCP FIN扫描(秘密扫描;nmap -sF):"></a>TCP FIN扫描(秘密扫描;nmap -sF):</h5><blockquote>
+<p>向目标端口发送FIN数据包</p>
+</blockquote>
+<blockquote>
+<pre><code>如果目标端口关闭，目标系统应该返回一个RST数据包，否则丢弃该包。通常只对UNIX系统的TCP/IP栈有&gt;效（Window平台总是返回RST包）
+由于不包含TCP三次握手协议的任何部分，所以无法被记录下来，从而比SYN扫描隐蔽
+FIN数据包能通过监测SYN包的包过滤器(秘密扫描)</code></pre></blockquote>
+<blockquote>
+<pre><code>秘密扫描的两个变体：
+   TCP Xmas扫描（圣诞树扫描;nmap -sX）: TCP包包头设置所有标志位目标端口关闭，目标系统应该返回一个RST数据包
+   TCP Null扫描（空扫描;nmap -sN）: 关掉所有的标志目标端口关闭，目标系统应该返回一个RST数据包</code></pre></blockquote>
+<blockquote>
+<p>   Remark：使用这些组合的目的是通过FIN标记监测器的过滤<br>   Remark：主要用于UNIX/Linux/BSD的TCP/IP的协议栈；不适用于Windows系统</p>
+</blockquote>
+<h5 id="TCP-ACK扫描-nmap-sA-："><a href="#TCP-ACK扫描-nmap-sA-：" class="headerlink" title="TCP ACK扫描(nmap-sA)："></a>TCP ACK扫描(nmap-sA)：</h5><blockquote>
+<p>   测试防火墙的规则集。判断防火墙是简单的包过滤防火墙；还是高级的、具备数据包过滤功能的状态（sta&gt;teful）防火墙<br>  不能用来确定端口是否开放或者关闭</p>
+</blockquote>
+<h5 id="TCP窗口扫描-nmap-sW"><a href="#TCP窗口扫描-nmap-sW" class="headerlink" title="TCP窗口扫描(nmap -sW):"></a>TCP窗口扫描(nmap -sW):</h5><blockquote>
+<p>   测试特定目标系统（如AIX和FreeBSD系统）上的端口是否开放、被过滤——会导致目标系统返回不同的TCP窗口长度值</p>
+</blockquote>
+<h5 id="TCP-Maimon扫描-nmap-sM-："><a href="#TCP-Maimon扫描-nmap-sM-：" class="headerlink" title="TCP Maimon扫描(nmap -sM)："></a>TCP Maimon扫描(nmap -sM)：</h5><blockquote>
+<p>  探测报文改为FIN/ACK外，其原理与TCPFIN扫描一样；无论端口是否开放，都应响应RST报文。Uriel注意到如果端口开放，许多基于BSD的系统只是丢弃该报文</p>
+</blockquote>
+<h5 id="UDP扫描-nmap-sU-："><a href="#UDP扫描-nmap-sU-：" class="headerlink" title="UDP扫描(nmap -sU)："></a>UDP扫描(nmap -sU)：</h5><blockquote>
+<p> 向目标端口发出UDP数据包<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果返回“ICMP port unreachable” 出错消息，表明端口关闭<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果没有收到该消息，端口可能开放<br>remark：UDP不要求必须建立一条连接，所以扫描的准确性取决于与目标网络的使用情况和过滤机制有关的许多因素（扫描结果不可靠）</p>
+</blockquote>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

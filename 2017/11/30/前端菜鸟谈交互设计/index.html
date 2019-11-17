@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      前端菜鸟谈交互设计 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;鉴于明天软件工程考试，交互设计是一个比较重要的考点，楼主平日里经常做一些前端开发的工作，如果是团队合作的话通常从担任产品角色的同学那里拿到设计稿后开始写代码，有时候自己写一些练手的小东西，要么随心所欲，放飞自我的写，做出来的东西通常让人毫无继续了解的想法，或者直接复原各大网站平台的设计，一些经验告诉我，好的人机交互确实对产品的推广度以及">
+<meta name="keywords" content="前端,交互设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端菜鸟谈交互设计 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/11/30/前端菜鸟谈交互设计/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;鉴于明天软件工程考试，交互设计是一个比较重要的考点，楼主平日里经常做一些前端开发的工作，如果是团队合作的话通常从担任产品角色的同学那里拿到设计稿后开始写代码，有时候自己写一些练手的小东西，要么随心所欲，放飞自我的写，做出来的东西通常让人毫无继续了解的想法，或者直接复原各大网站平台的设计，一些经验告诉我，好的人机交互确实对产品的推广度以及">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fm0a92z7g3g30k00f0kjl.gif">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fm0d8iyq5ej30u01hc1jy.jpg">
+<meta property="og:updated_time" content="2018-01-27T05:44:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端菜鸟谈交互设计 | Hexo">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;鉴于明天软件工程考试，交互设计是一个比较重要的考点，楼主平日里经常做一些前端开发的工作，如果是团队合作的话通常从担任产品角色的同学那里拿到设计稿后开始写代码，有时候自己写一些练手的小东西，要么随心所欲，放飞自我的写，做出来的东西通常让人毫无继续了解的想法，或者直接复原各大网站平台的设计，一些经验告诉我，好的人机交互确实对产品的推广度以及">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fm0a92z7g3g30k00f0kjl.gif">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">前端菜鸟谈交互设计</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-11-30" class="post-meta__date date">2017-11-30</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/前端/">前端</a>, <a class="categories-link" href="/categories/前端/原型设计/">原型设计</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/交互设计/">交互设计</a>, <a class="tags-link" href="/tags/前端/">前端</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;鉴于明天软件工程考试，交互设计是一个比较重要的考点，楼主平日里经常做一些前端开发的工作，如果是团队合作的话通常从担任产品角色的同学那里拿到设计稿后开始写代码，有时候自己写一些练手的小东西，要么随心所欲，放飞自我的写，做出来的东西通常让人毫无继续了解的想法，或者直接复原各大网站平台的设计，一些经验告诉我，好的人机交互确实对产品的推广度以及受欢迎程度影响很大。<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下面引用一个简单的例子从交互设计的四个层面简单分析一下!<br>&nbsp;&nbsp;&nbsp;下面我就来分析啦，纯粹出于个人观点，由于个人水平有限。有哪些地方说的不对的还希望大佬们谅解，实例是设计一个手机阅读软件的人机界面。</p>
+<h4 id="任务层："><a href="#任务层：" class="headerlink" title="任务层："></a>任务层：</h4><blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;作为一款手机阅读软件，面向的用户主要是习惯于智能手机操作并且习惯于电子阅读的青年学生以及中年人士，以及一部分由于视力障碍而需要朗读的用户。对于前一部分用户，功能组件应当设计的简单，明了，通过简单的触摸，滑动操作可以实现常用的功能，界面要符合年轻人的审美习惯，对于后一部分用户应当在手机硬件允许的条件下支持语音输入。进入软件时应当有欢迎界面，用户注册以及登录功能。在软件的首页应该包含的功能有，搜索功能，热门书籍推荐，用户个人设置，用户个人书架，以及书籍分类导航，书籍分类导航可有诸如言情，玄幻，都市，经典，武侠等等，用户可通过点击滑动等跳转到相应的页面。</p>
+</blockquote>
+<h4 id="语义层："><a href="#语义层：" class="headerlink" title="语义层："></a>语义层：</h4><blockquote>
+<p> &nbsp;&nbsp;&nbsp;&nbsp;语义层的主要工作是确定交互操作，当用户第一次打开软件时，首先进入欢迎页面，在欢迎界面之后来到用户登录/注册页面，用户录入个人信息进行注册，注册完成之后提示“是否立即登录”。用户选择是之后进入软件首页，选择否则退出，若不是第一次使用，则直接跳转至首页，用户可在个人设置中管理账号。在软件首页用户可以在搜索框中检索书名或者作者，检索到相应书籍之后进行点击书籍封面进入阅读，或者根据软件的推荐选择书籍阅读。在阅读界面用户可以进行相应的阅读设置，如修改字体，等等。</p>
+</blockquote>
+<h4 id="语法层："><a href="#语法层：" class="headerlink" title="语法层："></a>语法层：</h4><blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;用户点击进入软件——欢迎页面——注册/登录——选择注册———用户输入用户名，密码，手机号等进行注册——后台确认用户名无重名以及两次输入密码一致——提示是否立即登录，用户选择是，进入软件首页——用户搜索书籍名称，在数据库中检索，检索到则给出书籍列表，用户点击书籍封面进入阅读。未检索到则提示“抱歉，未找到您要的书”，回到首页。</p>
+</blockquote>
+<h4 id="实现层："><a href="#实现层：" class="headerlink" title="实现层："></a>实现层：</h4><blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;实现层主要是绘制界面，我找了两个比较优秀的实例在下面：<br><img src="http://ww4.sinaimg.cn/large/0060lm7Tly1fm0a92z7g3g30k00f0kjl.gif" alt="阅读界面"></p>
+</blockquote>
+<p><img src="http://ww4.sinaimg.cn/large/0060lm7Tly1fm0d8iyq5ej30u01hc1jy.jpg" alt="此处输入图片的描述"></p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

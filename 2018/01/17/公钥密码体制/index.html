@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      公钥密码体制 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="写在前面&amp;nbsp;&amp;nbsp;&amp;nbsp;这篇是我复习的时候做的笔记，不具有教程意义，公钥密码体制要解决的问题主要是在以往的密码算法中，加解密使用同一个密钥，消息发送者需要在通过公开信道将密文发给接受者之后，还需要将密钥通过安全信道传给接受者，这样就需要一条不能被黑客截获的安全信道来进行密钥的传输，为了解决这个问题，Diffie和Hellman提出了公钥密码体制。  RSA算法描述密钥的生成1">
+<meta name="keywords" content="密码学,公钥密码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="公钥密码体制 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/公钥密码体制/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="写在前面&amp;nbsp;&amp;nbsp;&amp;nbsp;这篇是我复习的时候做的笔记，不具有教程意义，公钥密码体制要解决的问题主要是在以往的密码算法中，加解密使用同一个密钥，消息发送者需要在通过公开信道将密文发给接受者之后，还需要将密钥通过安全信道传给接受者，这样就需要一条不能被黑客截获的安全信道来进行密钥的传输，为了解决这个问题，Diffie和Hellman提出了公钥密码体制。  RSA算法描述密钥的生成1">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2018/01/23/14/50/sky-3101604__340.jpg">
+<meta property="og:updated_time" content="2018-01-27T06:20:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="公钥密码体制 | Hexo">
+<meta name="twitter:description" content="写在前面&amp;nbsp;&amp;nbsp;&amp;nbsp;这篇是我复习的时候做的笔记，不具有教程意义，公钥密码体制要解决的问题主要是在以往的密码算法中，加解密使用同一个密钥，消息发送者需要在通过公开信道将密文发给接受者之后，还需要将密钥通过安全信道传给接受者，这样就需要一条不能被黑客截获的安全信道来进行密钥的传输，为了解决这个问题，Diffie和Hellman提出了公钥密码体制。  RSA算法描述密钥的生成1">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2018/01/23/14/50/sky-3101604__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">公钥密码体制</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-17" class="post-meta__date date">2018-01-17</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/密码学/">密码学</a>, <a class="categories-link" href="/categories/密码学/公钥密码/">公钥密码</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/公钥密码/">公钥密码</a>, <a class="tags-link" href="/tags/密码学/">密码学</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2018/01/23/14/50/sky-3101604__340.jpg" alt="此处输入图片的描述"></p>
+<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>&nbsp;&nbsp;&nbsp;这篇是我复习的时候做的笔记，不具有教程意义，公钥密码体制要解决的问题主要是在以往的密码算法中，加解密使用同一个密钥，消息发送者需要在通过公开信道将密文发给接受者之后，还需要将密钥通过安全信道传给接受者，这样就需要一条不能被黑客截获的安全信道来进行密钥的传输，为了解决这个问题，Diffie和Hellman提出了公钥密码体制。</p>
+<hr>
+<h3 id="RSA算法描述"><a href="#RSA算法描述" class="headerlink" title="RSA算法描述"></a>RSA算法描述</h3><h4 id="密钥的生成"><a href="#密钥的生成" class="headerlink" title="密钥的生成"></a>密钥的生成</h4><pre><code>1. 选择两个大素数p和q（q和p不相等，需要保密）
+2. 计算n=q*p,φ（n)=(p-1)\*(q-1)
+3. 选择整数e使e与φ（n)互素 1&lt;e&lt;φ（n)
+4. 计算，使d=e^(-1)modφ（n)</code></pre><h4 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h4><pre><code>加密（使用e和n），明文M&lt;n，密文C=M^e(modn)</code></pre><h4 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h4><pre><code>解密：密文C，明文M=C^d(mod n)</code></pre><hr>
+<p>待更新</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

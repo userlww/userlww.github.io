@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      javascript闭包 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;javascript闭包是JavaScript的一个特色，也是它的难点，许多前端工程师在面试的时候都会被问到闭包相关的问题，我在看书的时候看了一遍是有些不理解的，后来看了一位大佬的博客之后有了有了更好的理解，做了一点整理希望对大家有用。 变量作用域 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;要深入理解闭包，首先必须要了解javascript的变量作用域，变">
+<meta name="keywords" content="前端,javascript,闭包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript闭包 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/12/27/javascript闭包/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;javascript闭包是JavaScript的一个特色，也是它的难点，许多前端工程师在面试的时候都会被问到闭包相关的问题，我在看书的时候看了一遍是有些不理解的，后来看了一位大佬的博客之后有了有了更好的理解，做了一点整理希望对大家有用。 变量作用域 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;要深入理解闭包，首先必须要了解javascript的变量作用域，变">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-01-27T05:35:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript闭包 | Hexo">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;javascript闭包是JavaScript的一个特色，也是它的难点，许多前端工程师在面试的时候都会被问到闭包相关的问题，我在看书的时候看了一遍是有些不理解的，后来看了一位大佬的博客之后有了有了更好的理解，做了一点整理希望对大家有用。 变量作用域 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;要深入理解闭包，首先必须要了解javascript的变量作用域，变">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">javascript闭包</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-12-27" class="post-meta__date date">2017-12-27</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/前端/">前端</a>, <a class="categories-link" href="/categories/前端/JavaScript/">JavaScript</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/javascript/">javascript</a>, <a class="tags-link" href="/tags/前端/">前端</a>, <a class="tags-link" href="/tags/闭包/">闭包</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>&nbsp;&nbsp;&nbsp;javascript闭包是JavaScript的一个特色，也是它的难点，许多前端工程师在面试的时候都会被问到闭包相关的问题，我在看书的时候看了一遍是有些不理解的，后来看了一位大佬的博客之后有了有了更好的理解，做了一点整理希望对大家有用。</p>
+<h4 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h4><blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;要深入理解闭包，首先必须要了解javascript的变量作用域，变量作用域通常分为全局变量和局部变量，JavaScript的特殊之处，就在于函数内部可以直接读取全局变量</p>
+</blockquote>
+<blockquote>
+<pre><code>var n=111;
+function test1()
+{
+   alert(n);    //111
+}</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;另一方面，函数外部无法读取函数内的局部变量</p>
+</blockquote>
+<blockquote>
+<pre><code>function test1()
+{
+   var n=111;
+}
+   alert(n);    //报错  </code></pre><p>&nbsp;&nbsp;&nbsp;必须要注意的是,当在函数内部声明局部变量的时候，一定要使用var命令，否则解析引擎会将你声明的变量理解为一个全局变量</p>
+</blockquote>
+<blockquote>
+<pre><code>function test1()
+{
+  n=1000;
+}
+alert(n);      //1000</code></pre></blockquote>
+<h4 id="如何从外部读取局部变量"><a href="#如何从外部读取局部变量" class="headerlink" title="如何从外部读取局部变量"></a>如何从外部读取局部变量</h4><blockquote>
+<p>&nbsp;&nbsp;&nbsp;有的时候，我们需要访问访问函数内的局部变量，但是前面已经说过，正常情况下，是没有办法做到的，但是为了达到我们的需求，不得不采取一种变通的方法，那就是在函数内部再定义一个函数</p>
+</blockquote>
+<blockquote>
+<pre><code>function test1()
+ {
+    var n=1000;
+    function test2()
+     {
+        alert(n);      //1000
+     }
+ }</code></pre></blockquote>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;在上面定义的这一段代码中，函数test2被包含在函 test1的内部，那 &gt;test中的局部变量对test2都是可见的，但是test2中定义的变量对test1却是不可见的，这也就是JavaScript&gt;&gt;中&gt;作用域链的一个典型实例，子对象会一级一级向上寻找父对象中的变量，所以父对象的变量对子对象可见&gt;，而子对象的变量对父对象却是不可见的。<br>&nbsp;&nbsp;&nbsp;既然test2可以读取test1中的局部变量，那么只要把test2座为test1的返回值，我们就可以在test1外部读取它的局部变量。这就是我们接下来要引入的闭包的概念</p>
+</blockquote>
+<blockquote>
+<pre><code> function test1()
+{
+   var n=1000;
+   function test2()
+    {
+      alert(n);
+    }
+   return test2();
+ }
+  var result=test1();
+  result();</code></pre></blockquote>
+<h4 id="什么是闭包"><a href="#什么是闭包" class="headerlink" title="什么是闭包"></a>什么是闭包</h4><blockquote>
+<p>&nbsp;&nbsp;&nbsp;MDN上面对闭包的定义是：Closures (闭包)是使用被作用域封闭的变量，函数，闭包等执行的一个函数的作用域。通常我们用和其相应的函数来指代这些作用域。(可以访问独立数据的函数)，根据笔者自己的理解，闭包就是封装在一个函数的另一个子函数，用于返回它所在的父函数中定义的局部变量，以便能够在父函数外部实现对该变量的访问，或者让这个变量的值始终保存在内存之中,请看下面这段代码：</p>
+</blockquote>
+<blockquote>
+<pre><code>function test1()
+{
+ var n=100;
+ Nadd=function(){
+     n+=1;}
+   function test2()
+   {
+    alert(n);
+   }
+ return test2;
+ }
+ var result=test1();
+  result();         //100
+  Nadd();
+  result（);     //101</code></pre><p>&nbsp;&nbsp;&nbsp;在这段代码中,result就是闭包test2函数，一共执行了两次，第一次值是100，第二次是101，这说明test1中的局部变量n一直保存在内存中，而没有在test1调用后被自动清除。原因就是因为test1是test2的父函数，test2被赋给了一个一个全局变量，导致test2始终存在于内存中，它所依赖的test1也始终在内存中，不会在调用结束后被垃圾回收机制回收。<br>&nbsp;&nbsp;&nbsp;关于JavaScript闭包就先总结这些，可能有些地方也没有说的特别清楚，这里附上一篇另&gt;外一位大佬对闭包的讲解：</p>
+</blockquote>
+<blockquote>
+<pre><code>https://github.com/mqyqingfeng/Blog/issues/9。</code></pre></blockquote>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

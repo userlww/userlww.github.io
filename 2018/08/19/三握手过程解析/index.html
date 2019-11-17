@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      三握手过程解析 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="preface　　最近为了面试狂补计算机网络，三握手算是其中最重要的一个部分了，因此做以记录 TCP报文首部　　在正式说三握手之前首先扯一下TCP报文的结构，主要是TCP报文的首部结构，如图所示：　　              　　　　　   源端口和目的端口，各占２个字节，分别记录源端口和目的端口 序号，表示当前报文中发送的数据的第一个字节的序号，序号的范围是从0-2^32-1，增加到上限之后">
+<meta name="keywords" content="计算机网络,协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三握手过程解析 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/08/19/三握手过程解析/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="preface　　最近为了面试狂补计算机网络，三握手算是其中最重要的一个部分了，因此做以记录 TCP报文首部　　在正式说三握手之前首先扯一下TCP报文的结构，主要是TCP报文的首部结构，如图所示：　　              　　　　　   源端口和目的端口，各占２个字节，分别记录源端口和目的端口 序号，表示当前报文中发送的数据的第一个字节的序号，序号的范围是从0-2^32-1，增加到上限之后">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2018/08/21/23/29/fog-3622519__340.jpg">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fut6lehhpvj308n04iglh.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1futzgct4kyj30ob0r40ut.jpg">
+<meta property="og:updated_time" content="2018-09-01T10:55:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="三握手过程解析 | Hexo">
+<meta name="twitter:description" content="preface　　最近为了面试狂补计算机网络，三握手算是其中最重要的一个部分了，因此做以记录 TCP报文首部　　在正式说三握手之前首先扯一下TCP报文的结构，主要是TCP报文的首部结构，如图所示：　　              　　　　　   源端口和目的端口，各占２个字节，分别记录源端口和目的端口 序号，表示当前报文中发送的数据的第一个字节的序号，序号的范围是从0-2^32-1，增加到上限之后">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2018/08/21/23/29/fog-3622519__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">三握手过程解析</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-08-19" class="post-meta__date date">2018-08-19</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/计算机网络，TCP/">计算机网络，TCP</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/协议/">协议</a>, <a class="tags-link" href="/tags/计算机网络/">计算机网络</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2018/08/21/23/29/fog-3622519__340.jpg" alt="此处输入图片的描述"></p>
+<h3 id="preface"><a href="#preface" class="headerlink" title="preface"></a>preface</h3><p>　　最近为了面试狂补计算机网络，三握手算是其中最重要的一个部分了，因此做以记录</p>
+<h3 id="TCP报文首部"><a href="#TCP报文首部" class="headerlink" title="TCP报文首部"></a>TCP报文首部</h3><p>　　在正式说三握手之前首先扯一下TCP报文的结构，主要是TCP报文的首部结构，如图所示：<br>　　              　　　　　 <img src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fut6lehhpvj308n04iglh.jpg" alt="此处输入图片的描述"></p>
+<ul>
+<li>源端口和目的端口，各占２个字节，分别记录源端口和目的端口</li>
+<li>序号，表示当前报文中发送的数据的第一个字节的序号，序号的范围是从0-2^32-1，增加到上限之后重新从0开始 </li>
+<li>确认号，表示期望收到对方的下一个报文段的第一个数据字段的序号</li>
+<li>数据偏移，指出数据字段距离报文起始处的距离，即首部的长度</li>
+<li>保留位，占6位，保留为日后使用，目前要置为0<br>下面的六个控制位表示当前报文的性质</li>
+<li>紧急URG（urgent）,紧急字段，若URG=1.表示当前报文中有紧急数据，需要尽快传送</li>
+<li>确认ACK，仅当ACK=1时确认号才有效，在连接建立之后所有传送的报文段都必须将ACK置1</li>
+<li>推送PSH，当两个应用进程进行交互式通信时，若一端的应用程序希望在输入一个命令之后立即能够得到对方的响应，这时可以将PSH置为1，接收方将尽快的交付接收应用进程，而不必等整个缓存都填满之后再向上交付</li>
+<li>同步SYN，在连接时用来同步序号，当SYN=1而ACK=0时，表明这是一个连接请求报文段，若对方同意建立连接，则应在响应报文中将SYN和ACK置为1,因此SYN置为1表示这是一个连接建立报文或者连接接受报文</li>
+<li>终止FIN，用来释放一个连接。当FIN=1时，表明此报文段的发送方的数据已经发送完毕，并要求释放连接。  </li>
+<li>窗口</li>
+<li>校验和</li>
+<li>紧急指针</li>
+<li>选项<h3 id="三握手的过程"><a href="#三握手的过程" class="headerlink" title="三握手的过程"></a>三握手的过程</h3><img src="http://wx2.sinaimg.cn/mw690/0060lm7Tly1futzgct4kyj30ob0r40ut.jpg" alt="此处输入图片的描述"></li>
+</ul>
+<p>　　</p>
+<ul>
+<li>TCP服务器进程先创建传输控制块TCB,然后服务器进程就处于listen状态，等待客户端的连接请求。</li>
+<li>客户端进程也是先创建传输控制模块TCB，然后向B发出连接请求报文段，首部中的SYN=1，同时选择一个初始序号seq=x,TCP规定，SYN=1的报文段不能携带数据，但要消耗一个序号，这时客户端进入SYN-SENT状态</li>
+<li>服务器收进程收到请求报文段之后，如果同意建立连接，则向A发送确认，同时将ACK和SYN都置为1，确认号ack=x+1，同时为自己选一个初始序号seq=y。这个报文段不能携带数据，但是也要消耗一个序号，这时服务器进程进入SYN-RCVD状态</li>
+<li>TCP客户端收到服务器端的确认之后，还需要向Ｂ给出确认，确认报文段的ACK为1，确认号ack=y+1，自己的序号seq=x+1，这时TCP连接建立<h3 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h3></li>
+</ul>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

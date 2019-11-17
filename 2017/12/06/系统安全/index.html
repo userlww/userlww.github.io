@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      系统安全 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;考完了算法，可以说整个人都凉了，但是后天还有另一门考试，所以还是得复习啊，这篇文章来总结一下操作系统安全的前两章的知识点 1.TCSE定义的内容&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;A级： 校验级保护，提供低级别手段；&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;B3级：安全域，数据隐藏与分层、屏蔽；&amp;">
+<meta name="keywords" content="操作系统安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统安全 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/12/06/系统安全/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;考完了算法，可以说整个人都凉了，但是后天还有另一门考试，所以还是得复习啊，这篇文章来总结一下操作系统安全的前两章的知识点 1.TCSE定义的内容&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;A级： 校验级保护，提供低级别手段；&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;B3级：安全域，数据隐藏与分层、屏蔽；&amp;">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fm89k0yiclj30me0g2wlt.jpg">
+<meta property="og:updated_time" content="2018-01-27T05:46:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="系统安全 | Hexo">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;考完了算法，可以说整个人都凉了，但是后天还有另一门考试，所以还是得复习啊，这篇文章来总结一下操作系统安全的前两章的知识点 1.TCSE定义的内容&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;A级： 校验级保护，提供低级别手段；&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;B3级：安全域，数据隐藏与分层、屏蔽；&amp;">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fm89k0yiclj30me0g2wlt.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">系统安全</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-12-06" class="post-meta__date date">2017-12-06</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/课程笔记/">课程笔记</a>, <a class="categories-link" href="/categories/课程笔记/操作系统安全/">操作系统安全</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/操作系统安全/">操作系统安全</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;考完了算法，可以说整个人都凉了，但是后天还有另一门考试，所以还是得复习啊，这篇文章来总结一下操作系统安全的前两章的知识点</p>
+<h3 id="1-TCSE定义的内容"><a href="#1-TCSE定义的内容" class="headerlink" title="1.TCSE定义的内容"></a>1.TCSE定义的内容</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A级： 校验级保护，提供低级别手段；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B3级：安全域，数据隐藏与分层、屏蔽；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B2级：结构化内容保护，支持硬件保护；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B1级：标记安全保护，如System V等；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C2级：有自主的访问安全性，区分用户；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C1级：不区分用户，基本的访问控制；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D级： 沒有安全性可言，例如MS DOS</p>
+<h3 id="2-Windows的C2级别的安全策略"><a href="#2-Windows的C2级别的安全策略" class="headerlink" title="2.Windows的C2级别的安全策略"></a>2.Windows的C2级别的安全策略</h3><h4 id="nbsp-nbsp-nbsp-nbsp-nbsp-强制的用户访问标识"><a href="#nbsp-nbsp-nbsp-nbsp-nbsp-强制的用户访问标识" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;强制的用户访问标识"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;强制的用户访问标识</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有的用户必须以唯一的登录标识和密码来鉴别自身；</p>
+<h4 id="nbsp-nbsp-nbsp-nbsp-nbsp-自主访问控制"><a href="#nbsp-nbsp-nbsp-nbsp-nbsp-自主访问控制" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自主访问控制"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自主访问控制</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自由的访问控制 资源的所有者必须能够控制对资源的访问;</p>
+<h4 id="nbsp-nbsp-nbsp-nbsp-nbsp-可记账性和审核"><a href="#nbsp-nbsp-nbsp-nbsp-nbsp-可记账性和审核" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可记账性和审核"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可记账性和审核</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;能够审计所有安全相关事件和个人活动<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;只有管理员才有访问权限</p>
+<h4 id="nbsp-nbsp-nbsp-nbsp-nbsp-对象的重用"><a href="#nbsp-nbsp-nbsp-nbsp-nbsp-对象的重用" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象的重用"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象的重用</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;必须保护对象在完成其使命后，不再被其他对象所利用。</p>
+<h3 id="3-Windows的安全体系结构"><a href="#3-Windows的安全体系结构" class="headerlink" title="3.Windows的安全体系结构"></a>3.Windows的安全体系结构</h3><h4 id="nbsp-nbsp-nbsp-nbsp-nbsp-windows-NT体系结构分为内核模式和用户模式"><a href="#nbsp-nbsp-nbsp-nbsp-nbsp-windows-NT体系结构分为内核模式和用户模式" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows NT体系结构分为内核模式和用户模式"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows NT体系结构分为内核模式和用户模式</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内核模式中的代码具有极高的特权，可以直接对硬件进行操作和直接访问所有的内存空间<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户模式中的代码拥有较低的特权，不能直接对硬件进行访问，内存访问受限。<br><img src="http://ww4.sinaimg.cn/large/0060lm7Tly1fm89k0yiclj30me0g2wlt.jpg" alt="Windows NT 安全体系结构"></p>
+<h4 id="nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-本地安全授权（LSA）"><a href="#nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-本地安全授权（LSA）" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本地安全授权（LSA）"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本地安全授权（LSA）</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             LSA负责使所有本地和远程的用户登录生效，生成安全访问令牌，管理本地安全策略，记录SRM的任何审核消息所产生的事件日志。</p>
+<h4 id="nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-安全引用监控器SRM"><a href="#nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-安全引用监控器SRM" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安全引用监控器SRM"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安全引用监控器SRM</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SRM和对象管理器联合起来，实施访问控制策略和审核策略；SRM在对象句柄创建时进行安全性检查，而并不是在每次访问时进行检查。</p>
+<h4 id="nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-对象管理器"><a href="#nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-对象管理器" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象管理器"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象管理器</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用：负责对象的命名、保护、分配和处理</p>
+<h3 id="nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-windows的用户和用户组"><a href="#nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-windows的用户和用户组" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows的用户和用户组"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows的用户和用户组</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户账户：都用用户名和密码进行标识，SID（安全标识符）；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户组账户：具有相似工作或资源要求的用户可组成一个用户组：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内置用户组账户</p>
+<blockquote>
+<pre><code>Adminstrator：                          管理员组
+user:                                   用户组
+Guests:                                 来宾用户组
+Backup Operator:                        备份操作组
+Repllcator:                             复制操作组
+*Operators(Print,Account,Server)
+Domain*(Adminstrator,users,Guest)       只在域服务器上的组
+特殊组（Network，Interative，Everyone,...)</code></pre></blockquote>
+<h3 id="域（Domain）"><a href="#域（Domain）" class="headerlink" title="域（Domain）"></a>域（Domain）</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域是一批具有集中安全授权机构和若干台工作站和成员服务器的计算机集合</p>
+<h3 id="信任关系"><a href="#信任关系" class="headerlink" title="信任关系"></a>信任关系</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当网络更大时，可以用信任关系来创建并链接多个域</p>
+<h4 id="信任关系的种类："><a href="#信任关系的种类：" class="headerlink" title="信任关系的种类："></a>信任关系的种类：</h4><blockquote>
+<pre><code>单向信任关系：信任域——&gt;受信任域
+双向信任关系：信任域&lt;--&gt;受信任域</code></pre></blockquote>
+<h4 id="信任关系种类"><a href="#信任关系种类" class="headerlink" title="信任关系种类"></a>信任关系种类</h4><blockquote>
+<pre><code>单域模型
+主域模型
+多主域模型
+完全信任模型</code></pre></blockquote>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

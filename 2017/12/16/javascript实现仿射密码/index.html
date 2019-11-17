@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      javascript实现仿射密码加解密 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="仿射密码&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;仿射密码是古典密码算法中单表代换密码的一种，所谓单表代换就是指明文中相同的字符在加密过程中使用同一个字符进行代换，而仿射密码的加密算法就是一个线性变换，就是对于任意的明文字符x，对应的密文字符为y≡e(x)≡ax+b(mod26)，a,b为小于26的整数,并且a，必须与26互素。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n">
+<meta name="keywords" content="JavaScript,密码学,古典密码，仿射密码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript实现仿射密码加解密 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/12/16/javascript实现仿射密码/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="仿射密码&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;仿射密码是古典密码算法中单表代换密码的一种，所谓单表代换就是指明文中相同的字符在加密过程中使用同一个字符进行代换，而仿射密码的加密算法就是一个线性变换，就是对于任意的明文字符x，对应的密文字符为y≡e(x)≡ax+b(mod26)，a,b为小于26的整数,并且a，必须与26互素。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://s1.ax2x.com/2017/12/17/msyjn.png">
+<meta property="og:updated_time" content="2018-01-27T05:36:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript实现仿射密码加解密 | Hexo">
+<meta name="twitter:description" content="仿射密码&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;仿射密码是古典密码算法中单表代换密码的一种，所谓单表代换就是指明文中相同的字符在加密过程中使用同一个字符进行代换，而仿射密码的加密算法就是一个线性变换，就是对于任意的明文字符x，对应的密文字符为y≡e(x)≡ax+b(mod26)，a,b为小于26的整数,并且a，必须与26互素。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n">
+<meta name="twitter:image" content="https://s1.ax2x.com/2017/12/17/msyjn.png">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">javascript实现仿射密码加解密</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-12-16" class="post-meta__date date">2017-12-16</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/前端/">前端</a>, <a class="categories-link" href="/categories/前端/JavaScript/">JavaScript</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tags-link" href="/tags/古典密码，仿射密码/">古典密码，仿射密码</a>, <a class="tags-link" href="/tags/密码学/">密码学</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h4 id="仿射密码"><a href="#仿射密码" class="headerlink" title="仿射密码"></a>仿射密码</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;仿射密码是古典密码算法中单表代换密码的一种，所谓单表代换就是指明文中相同的字符在加密过程中使用同一个字符进行代换，而仿射密码的加密算法就是一个线性变换，就是对于任意的明文字符x，对应的密文字符为y≡e(x)≡ax+b(mod26)，a,b为小于26的整数,并且a，必须与26互素。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注:当a=1，b=3时，这种仿射密码就是著名的凯撒密码。用js实现加密过程的代码如下：</p>
+<blockquote>
+<pre><code>var mingwen=document.getElementById(&quot;mingwen&quot;).value.toLowerCase();//获取明文字符串，将其转换为小写
+var a=parseInt(document.getElementById(&quot;k1&quot;).value);//获取a,b;
+var b=parseInt(document.getElementById(&quot;k2&quot;).value);
+var code=new Array(0);
+var miwen=new Array(0);
+var j;
+var str;
+for(var i=0;i&lt;mingwen.length;i++)
+{
+    code[i]=((a*(mingwen.charCodeAt(i)-97)+b)%26);//求对应密文字符的Unicode码
+    miwen[i]=String.fromCharCode(code[i]+97);   //解析为对应字符
+}
+for( j=1;j&lt;miwen.length;j++)                //将密文串成字符串
+{
+    miwen[j]=miwen[j-1]+miwen[j];
+}
+var result=document.getElementById(&quot;miwen&quot;);
+result.innerText=miwen[j-1];</code></pre></blockquote>
+<h4 id="已知密钥解密"><a href="#已知密钥解密" class="headerlink" title="已知密钥解密"></a>已知密钥解密</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据欧拉函数可知0-26之间共有12个与26互素的数字，则密钥空间为12*26=312。又由a与26互素可知在0-26之间一定存在a的乘法逆元a^-1,使得a*a^-1≡1(mod26)，在加密函数两侧同时乘以a^-1可得仿射密码的加密函数为：x≡a^-1(e(x)-b)(mod26),其中a^-1可由扩展欧几里得算法求解。以下为已知密钥破解的代码</p>
+<blockquote>
+<pre><code>var miwen=document.getElementById(&quot;miwen&quot;).value.toLowerCase();
+var result=document.getElementById(&quot;mingwenyu&quot;);
+var c=parseInt(document.getElementById(&quot;k3&quot;).value);    //c的值即为a的逆元
+var d=parseInt(document.getElementById(&quot;k2&quot;).value);
+var mingwen=new Array(0);
+var code=new Array(0);
+for(var i=0;i&lt;miwen.length;i++)
+{
+    code[i]=(c*(miwen.charCodeAt(i)-97-d+26))%26;
+    mingwen[i]=String.fromCharCode(code[i]+97);
+}
+for(var i=1;i&lt;mingwen.length;i++)
+{
+    mingwen[i]=mingwen[i-1]+mingwen[i];
+}
+result.value=mingwen[i-1];</code></pre></blockquote>
+<h4 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;暴力破解就是尝试所有的可能密钥，得到所有可能的密文，然后从中找出正确的密文</p>
+<blockquote>
+<pre><code>var miwen = document.getElementById(&quot;miwen&quot;).value.toLowerCase();
+var a = [1, 9, 21, 15, 3, 19, 7, 23, 11, 15, 17, 25];
+var code = new Array(0);
+var mingwen = new Array(0);
+var result=document.getElementById(&quot;mingwenyu&quot;);
+for (var j = 0; j &lt; 12; j++)
+    for (var b = 0; b &lt; 26; b++)
+    {
+        for (var i = 0; i &lt; miwen.length; i++)
+        {
+            code[i] = ((a[j] * (miwen.charCodeAt(i) - 97) + b) % 26);
+            mingwen[i] = String.fromCharCode(code[i] + 97);
+        }
+        for (var k = 1; k &lt; miwen.length; k++)
+        {
+            mingwen[k] = mingwen[k - 1] + mingwen[k];
+        }
+        mingwen[k]=mingwen[k-1]+&quot; \n&quot;;
+        result.value+=mingwen[k];</code></pre></blockquote>
+<p>js代码在浏览器中解析执行，对应的HTML结构如下:</p>
+<blockquote>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;input&quot;&gt;
+            &lt;div class=&quot;input-group input-group-sm&quot;&gt;
+                &lt;span class=&quot;input-group-addon&quot; &gt;明文&lt;/span&gt;
+                &lt;input type=&quot;text&quot; id=&quot;mingwen&quot; class=&quot;mingwen form-control&quot;&gt;
+            &lt;/div&gt;
+            &lt;br&gt;
+            &lt;div class=&quot; k1 input-group&quot;&gt;
+                &lt;span class=&quot;words input-group-addon&quot;&gt;加密k1&lt;/span&gt;
+                &lt;input type=&quot;text&quot;  class=&quot;form-control&quot; id=&quot;k1&quot;&gt;
+            &lt;/div&gt;
+        &lt;br&gt;
+            &lt;div class=&quot; k2 input-group&quot;&gt;
+                &lt;span class=&quot;input-group-addon&quot;&gt;加密k2&lt;/span&gt;
+            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;k2&quot;&gt;
+            &lt;/div&gt;
+        &lt;br&gt;
+        &lt;div class=&quot; k2 input-group&quot;&gt;
+            &lt;span class=&quot;input-group-addon&quot;&gt;解密密钥&lt;/span&gt;
+            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;k3&quot;&gt;
+        &lt;/div&gt;
+        &lt;br&gt;
+        &lt;div class=&quot; output input-group&quot;&gt;
+            &lt;span class=&quot;input-group-addon&quot;&gt;密文&lt;/span&gt;
+            &lt;textarea id=&quot;miwen&quot; class=&quot;form-control&quot;&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;mingwenyu input-group&quot;&gt;
+            &lt;span class=&quot;input-group-addon&quot; &gt;明文&lt;/span&gt;
+            &lt;textarea id=&quot;mingwenyu&quot; class=&quot;form-control&quot;&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;anniuzu&quot;&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;input type=&quot;submit&quot; class=&quot;  btn btn-info &quot; value=&quot;加密&quot; onclick=&quot;jiami()&quot;&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;input type=&quot;submit&quot; class=&quot;  btn btn-info &quot;value=&quot;求k2&quot;  onclick=&quot;qiuk2()&quot;&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;input type=&quot;submit&quot; class=&quot;  btn btn-info &quot; value=&quot;已知密钥破解&quot;onclick=&quot;k2pojie()&quot;&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;input type=&quot;submit&quot; class=&quot;  btn btn-info&quot;value=&quot;暴力破解&quot;onclick=&quot;baopo()&quot;&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;script src=&quot;js/fangshe.js&quot;&gt;&lt;/script&gt;</code></pre></blockquote>
+<p>样式中引用了bootstrap的ui框架，有需要的可以下载bootstrap并通过以下代码引入：</p>
+<blockquote>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/bootstrap.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/bootstrap-theme.css&quot;&gt;</code></pre></blockquote>
+<p>自定义CSS</p>
+<blockquote>
+<pre><code>body{
+    background-color:bisque;
+}
+span{
+    background-color:greenyellow;
+}
+
+.input
+{
+    position: relative;
+    width:500px;
+    left:200px;
+    top:50px;
+    display: inline-block;
+}
+.output{
+    position: relative;
+    top:0px;
+}
+.qiumiyao{
+    position: relative;
+    top:40px;
+}
+.submit
+{
+    position: relative;
+    left:100px;
+    top:37px;
+}
+.reset
+{
+    position: relative;
+    left:250px;
+    top:37px;
+}
+.jiemi{
+    position: relative;
+    top:50px;
+}
+.anniuzu{
+    position: relative;
+    top:-470px;
+    left:725px;
+}
+.mingwenyu{
+    position: relative;
+    top: 40px;
+}
+#mingwenyu{
+    height: 300px;
+}
+ul{
+    list-style: none;
+    float:left;
+    width:200px;
+    height:500px;
+    display: inline-block;
+}
+li{
+    width:40px;
+    height:100px;
+}</code></pre></blockquote>
+<p><img src="https://s1.ax2x.com/2017/12/17/msyjn.png" alt="此处输入图片的描述">界面效果有一点丑，但是凑合着看吧，毕竟实现算法才是重要的</p>
+<h4 id="一点心得"><a href="#一点心得" class="headerlink" title="一点心得"></a>一点心得</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;之所以不用C++或者PHP是因为相对来说在浏览器中执行相对来说面向用户更加友好，不用python是因为不会,在实现过程中发现用到的API之前都没有用过的，最后通过问大佬解决了问题，中间遇到的问题有一个是取余和取模的区别，这两者在正数处理的时候都是相同的，在处理负数的时候有所不同，请看大佬的解析：<a href="http://blog.csdn.net/huasion/article/details/6855900" target="_blank" rel="noopener">http://blog.csdn.net/huasion/article/details/6855900</a></p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

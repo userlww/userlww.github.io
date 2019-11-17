@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      分组密码的工作模式 | Hexo 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="John Doe">
+    
+    
+
+    <meta name="description" content="写在前面&amp;nbsp;&amp;nbsp;还有两天就要考试了。博主的复习状态还是一塌糊涂，面对密码学真的是有点方啊，这篇博客来总结一下分组密码的五种工作模式  工作模式的作用&amp;nbsp;&amp;nbsp;&amp;nbsp;根据楼主的理解,工作模式的作用，就是在密码系统中，采用适当的工作模式，来隐蔽明文的统计特性以及数据格式等，用以提高整个密码系统的安全性，降低删除,重放，插入和伪造成功的机会 五种工作模式介绍电码本模">
+<meta name="keywords" content="密码学,分组密码,工作模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分组密码的工作模式 | Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/01/20/分组密码的工作模式/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="写在前面&amp;nbsp;&amp;nbsp;还有两天就要考试了。博主的复习状态还是一塌糊涂，面对密码学真的是有点方啊，这篇博客来总结一下分组密码的五种工作模式  工作模式的作用&amp;nbsp;&amp;nbsp;&amp;nbsp;根据楼主的理解,工作模式的作用，就是在密码系统中，采用适当的工作模式，来隐蔽明文的统计特性以及数据格式等，用以提高整个密码系统的安全性，降低删除,重放，插入和伪造成功的机会 五种工作模式介绍电码本模">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2018/01/24/19/23/the-cabins-3104584__340.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fnnyonu1fuj30iq0e3ta1.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/0060lm7Tly1fnnyzzmxgrj30jm0dfabf.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/0060lm7Tly1fnnz7tbnq6j30jj0b33yy.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fnnzrvaw7aj30j80bkdga.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0060lm7Tly1fnnzwojxroj30jt0bgq3d.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/0060lm7Tly1fno0dtbqt6j30kf0cc75c.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/0060lm7Tly1fno0uedxkij30i60b4q4c.jpg">
+<meta property="og:updated_time" content="2018-01-27T06:14:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分组密码的工作模式 | Hexo">
+<meta name="twitter:description" content="写在前面&amp;nbsp;&amp;nbsp;还有两天就要考试了。博主的复习状态还是一塌糊涂，面对密码学真的是有点方啊，这篇博客来总结一下分组密码的五种工作模式  工作模式的作用&amp;nbsp;&amp;nbsp;&amp;nbsp;根据楼主的理解,工作模式的作用，就是在密码系统中，采用适当的工作模式，来隐蔽明文的统计特性以及数据格式等，用以提高整个密码系统的安全性，降低删除,重放，插入和伪造成功的机会 五种工作模式介绍电码本模">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2018/01/24/19/23/the-cabins-3104584__340.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo</a></h1>
+        <hr class="panel-cover__divider">
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title class>关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title class>归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">分组密码的工作模式</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-20" class="post-meta__date date">2018-01-20</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/密码学/">密码学</a>, <a class="categories-link" href="/categories/密码学/分组密码/">分组密码</a>, <a class="categories-link" href="/categories/密码学/分组密码/工作模式/">工作模式</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/分组密码/">分组密码</a>, <a class="tags-link" href="/tags/密码学/">密码学</a>, <a class="tags-link" href="/tags/工作模式/">工作模式</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><img src="https://cdn.pixabay.com/photo/2018/01/24/19/23/the-cabins-3104584__340.jpg" alt="此处输入图片的描述"></p>
+<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>&nbsp;&nbsp;还有两天就要考试了。博主的复习状态还是一塌糊涂，面对密码学真的是有点方啊，这篇博客来总结一下分组密码的五种工作模式</p>
+<hr>
+<h3 id="工作模式的作用"><a href="#工作模式的作用" class="headerlink" title="工作模式的作用"></a>工作模式的作用</h3><p>&nbsp;&nbsp;&nbsp;根据楼主的理解,工作模式的作用，就是在密码系统中，采用适当的工作模式，来隐蔽明文的统计特性以及数据格式等，用以提高整个密码系统的安全性，降低删除,重放，插入和伪造成功的机会</p>
+<h3 id="五种工作模式介绍"><a href="#五种工作模式介绍" class="headerlink" title="五种工作模式介绍"></a>五种工作模式介绍</h3><h4 id="电码本模式"><a href="#电码本模式" class="headerlink" title="电码本模式"></a>电码本模式</h4><h5 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h5><p>&nbsp;&nbsp;ECB模式直接用分组密码算法来实现消息的加解密</p>
+<ul>
+<li>一个明文分组被加密成同一个密文分组，相同的明文分组加密成相同的密文分组</li>
+<li>明文分成64的分组进行加密，这里的分组长度由密码算法决定，必要时进行填充</li>
+<li>padding(填充)：加密消息按64bit分组时们最后一组消息可能不足64比特时可以填充一些字符<br>&nbsp;&nbsp;示意图<br><img src="http://ww4.sinaimg.cn/large/0060lm7Tly1fnnyonu1fuj30iq0e3ta1.jpg" alt="此处输入图片的描述"><h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5></li>
+<li>操作简单，主要用于较短而且随机的报文的加密</li>
+<li>相同明文在密钥相同时得到相同的密文，明文的重复和内容在密文中体现出来，容易实现分析攻击，分组重放攻击和代换攻击</li>
+<li>链接依赖性：各组的加密都独立于其他分组，可并行处理</li>
+<li>错误传播：单个密文分组中的一个或多个比特的错误不会影响其他分组的解密结果</li>
+</ul>
+<h4 id="密码分组链接模式（CBC）"><a href="#密码分组链接模式（CBC）" class="headerlink" title="密码分组链接模式（CBC）"></a>密码分组链接模式（CBC）</h4><h5 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h5><ul>
+<li>一种反馈机制在分组密码中的应用，每个分组不尽依赖于它前面的所有分组</li>
+<li>相同的明文，即使密钥相同的情况在也无法得到相同的密文，隐藏了明文的统计特性</li>
+<li>链接依赖性：对于一个正确密文分组的正确解密之前要求它之前的那个明文分组也正确，不能实现并行处理</li>
+<li>错误传播：密文分组中的一个单比特错误会影响到本分组和其后分组的解密，错误传播为两组</li>
+<li>初始化向量不需要保密，它可以明文形式与密文一起传送<br>&nbsp;&nbsp;示意图<br><img src="http://ww2.sinaimg.cn/large/0060lm7Tly1fnnyzzmxgrj30jm0dfabf.jpg" alt="此处输入图片的描述"></li>
+</ul>
+<h4 id="密码反馈模式CFB"><a href="#密码反馈模式CFB" class="headerlink" title="密码反馈模式CFB"></a>密码反馈模式CFB</h4><h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><p>  &nbsp;&nbsp;CFB实际上是将加密算法作为一个密钥流产生器，j=1时就退化为流密码<br>  示意图<br>  <img src="http://ww2.sinaimg.cn/large/0060lm7Tly1fnnz7tbnq6j30jj0b33yy.jpg" alt="此处输入图片的描述"></p>
+<h5 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>优点：自同步能力强，可以处理任意长度的消息；</li>
+<li>缺点：<ul>
+<li>明文中某一组有错，使以后的密文组都会受影响，但经过解密之后，除原有错误的一组都可以正确恢复</li>
+<li>密文里的一位错误会引起明文的一个单独错误，此错误进入移位寄存器，导致密文成为无用信息，直到该错误从移位寄存器中移出。<h4 id="OFB"><a href="#OFB" class="headerlink" title="OFB"></a>OFB</h4><h5 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h5>&nbsp;&nbsp;&nbsp;输出反馈模式的结构类似，不同之处在于OFB模式将加密算法的输出反馈到移位寄存器<h5 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h5>加密示意图</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://ww4.sinaimg.cn/large/0060lm7Tly1fnnzrvaw7aj30j80bkdga.jpg" alt="此处输入图片的描述"></p>
+<p> 解密图示<br> <img src="http://ww1.sinaimg.cn/large/0060lm7Tly1fnnzwojxroj30jt0bgq3d.jpg" alt="此处输入图片的描述"></p>
+<p>  将分组密码算法作为密钥流产生器，其输出的j比特密钥直接反馈至分组密码的输入端，同时这j比特密钥和输入的j别特的明文进行按位模2加</p>
+<h5 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>可加密任意长度的数据，不需要进行分组填充，没有错误传播，适用于加密冗余度较大的数据，语音和图像等，但对密文的篡改难以检测</li>
+<li>失去同步是致命的<h4 id="计数器模式（CTR）"><a href="#计数器模式（CTR）" class="headerlink" title="计数器模式（CTR）"></a>计数器模式（CTR）</h4><h5 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h5>&nbsp;&nbsp;CTR模式使用与明文相同的计数器长度，但加密不同的分组所用的计数器必须不同<h5 id="示意图-1"><a href="#示意图-1" class="headerlink" title="示意图"></a>示意图</h5><img src="http://ww2.sinaimg.cn/large/0060lm7Tly1fno0dtbqt6j30kf0cc75c.jpg" alt="此处输入图片的描述"></li>
+</ul>
+<h5 id="计数器模式的特点"><a href="#计数器模式的特点" class="headerlink" title="计数器模式的特点"></a>计数器模式的特点</h5><ul>
+<li>随机访问特性</li>
+<li>高效率</li>
+<li>可以处理任意长度的数据   </li>
+</ul>
+<h3 id="模式的比较和选用"><a href="#模式的比较和选用" class="headerlink" title="模式的比较和选用"></a>模式的比较和选用</h3><ul>
+<li>ECB模式：简单，高速，但最弱，易受重放攻击，一般不推荐</li>
+<li>CBC模式适用于文件加密，比ECB慢，安全性加强</li>
+<li>OFB和CFB比CBC慢许多。每次迭代只有少数bit完成加密。若可以容忍少量错误扩展，此时用CFB，在字符为单元的流密码中多选CFB模式</li>
+<li>OFB用于高速同步系统，没有错误传播</li>
+<li>CTR适用于对实时性和速度要求比较高的场合<img src="http://ww2.sinaimg.cn/large/0060lm7Tly1fno0uedxkij30i60b4q4c.jpg" alt="此处输入图片的描述"></li>
+</ul>
+<hr>
+<p>参考：</p>
+<ul>
+<li>《现代密码学教程》谷利泽主编</li>
+<li>CUMT密码学张老师课件</li>
+</ul>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
